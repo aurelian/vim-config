@@ -104,36 +104,32 @@ set matchpairs+=<:>
 " Save when losing focus
 au FocusLost * :wa
 
+" {{{ colors
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+" }}}
+
 if has("gui_running")
   " colors molokai
   " colors solarized
   " colors ir_black
-  colors mayansmoke
+  " colors mayansmoke
   set background=dark
   set cursorline
   set guifont=Monaco:h11
   set guioptions-=T
   set guioptions-=r
-  " nmap <silent> <> :CommandT<CR>
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
   set pastetoggle=<D-e>
   set statusline=[%{getcwd()}\%{GitBranch()}\]\ %f\ %2*%m\ %1*%h%r%=%{strlen(RvmOrFiletype())?RvmOrFiletype():'none'}\ 0x%B\ %12.(%c:%l/%L%)
 else
-  "set background=dask
-
-  " let g:solarized_termcolors=256
-  "set mouse=a
-  "set t_ku=O*A
-  "set t_kd=O*B
-  "set t_kr=O*C
-  "set t_kl=O*D
+  set background=light
   set notimeout
-  "imap OA <ESC>ki
-  "imap OB <ESC>ji
-  "imap OC <ESC>li
-  "imap OD <ESC>hi
 endif
 
 hi Todo guifg=#FF0000 guibg=#FF7F50
