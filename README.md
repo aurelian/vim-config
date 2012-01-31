@@ -29,7 +29,7 @@
 
   Usage:
 
-    ```
+  ```
       o    to open (same as enter)
       go   to preview file (open but maintain focus on ack.vim results)
       t    to open in new tab
@@ -37,7 +37,7 @@
       v    to open in vertical split
       gv   to open in vertical split silently
       q    to close the quickfix window
-    ```
+  ```
 
   Command is set to: <code>ack -H --nocolor --nogroup --column --ruby</code>
 
