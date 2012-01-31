@@ -1,8 +1,13 @@
+set nocompatible
+
 call pathogen#infect()
 
 syntax on
 filetype plugin indent on
 
+let mapleader=','
+
+set t_Co=256
 set foldmethod=marker " | syntax
 set foldlevelstart=1
 set foldnestmax=5
@@ -18,7 +23,7 @@ set shiftwidth=2  " size for auto/smartindent
 set softtabstop=2 " a tab is this size
 set expandtab     " spaces not tabs
 set smartindent   " indents for you
-set nosmarttab      " tabs at start of lines
+set nosmarttab    " tabs at start of lines
 set autoindent    " always set autoindenting on
 
 function! GitBranch()
@@ -42,19 +47,16 @@ function! RvmOrFiletype()
   endif
 endfunction
 
-"function! ActivateInvisibleCharIndicator()
-"  syntax match TrailingSpace "[ \t]\+$" display containedin=ALL
-"  highlight TrailingSpace ctermbg=Red
-"endf
-"autocmd BufNewFile,BufRead * call ActivateInvisibleCharIndicator()
-
-" utf-8 encoding
+" utf-8 everywere
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 
 set showcmd
-set timeoutlen=50
+set listchars=tab:▸\ ,eol:¬
+" set timeoutlen=50
+" set notimeout
+" set ttimeoutlen=50
 
 " https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 set wildmenu
@@ -70,16 +72,7 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" Fuck you, help key.
-" noremap  <F1> :set invfullscreen<CR>
-" inoremap <F1> <ESC>:set invfullscreen<CR>a
-" Fuck you too, manual key.
-" nnoremap K <nop>
-" Stop it, hash key.
-" inoremap # X<BS>#
-
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
-" map <leader>e :edit ##
 map >> gT
 map << gt
 
@@ -98,38 +91,39 @@ set history=50 " keep 50 lines in history
 "set nowrap     " no wrap
 set hlsearch   " highlight search word
 set ruler
-
+set nu         " show line number
+set nuw=2      " line numbers of 2 cols
+set anti       " antialias on
+set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
 
 " Save when losing focus
 au FocusLost * :wa
 
-" {{{ colors
+set background=light
+
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
-" }}}
 
 if has("gui_running")
   " colors molokai
-  " colors solarized
   " colors ir_black
   " colors mayansmoke
   set background=dark
   set cursorline
   set guifont=Monaco:h11
-  set guioptions-=T
-  set guioptions-=r
+  set guioptions-=T  " no toolbar
+  set guioptions-=r  " no right-hand scrollbar
+  set guioptions-=L  " no left-hand scrollbar
+  " set guioptions-=Rl " no other scrollbars
+  set guioptions+=c  " console dialogs
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
-  set pastetoggle=<D-e>
   set statusline=[%{getcwd()}\%{GitBranch()}\]\ %f\ %2*%m\ %1*%h%r%=%{strlen(RvmOrFiletype())?RvmOrFiletype():'none'}\ 0x%B\ %12.(%c:%l/%L%)
-else
-  set background=light
-  set notimeout
 endif
 
 hi Todo guifg=#FF0000 guibg=#FF7F50
@@ -139,7 +133,7 @@ hi XXX  guifg=#FF0000 guibg=#FF7F50
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
 au BufRead,BufNewFile *.scss  set filetype=scss
-au BufRead,BufNewFile *.scss  set filetype=eruby
+" au BufRead,BufNewFile *.scss  set filetype=eruby
 au BufRead,BufNewFile Rakefile set filetype=ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby
@@ -147,6 +141,7 @@ au BufRead,BufNewFile Gemfile set filetype=ruby
 au FileType c setlocal shiftwidth=4 softtabstop=4
 au FileType cpp setlocal shiftwidth=4 softtabstop=4
 " au Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
+" autocmd FileType javascript setlocal ai et sta sw=4 sts=4
 
 " w!! when you forgot sudo
 cmap w!! %!sudo tee > /dev/null %
