@@ -1,14 +1,37 @@
-#### Stuff 
+#### My vim configs
+
+Install:
+
+    git clone git://github.com/aurelian/vim-config.git ~/.vim
+    ln -s ~/vimrc ~/.vimrc
+
+Some mappings in [vimrc](blob/master/vimrc) are MacOS specific.
+
+#### Stuff I should use more often
 
 * <code>##</code> in cmd adds current path
 
 * <code>cmd-cr</code> toggles fullscreen (in mvim)
 
-* <code>:set (no)list</code> -> hides/shows tabs and enters #=> usefull to detect spaces vs tabs
+* <code>:set (no)list</code> #=> hides/shows tabs and enters #=> usefull to detect spaces vs tabs
 
-* <code>cmd-e</code> -> toggles <code>:set paste</code>
+* <code>cmd-e</code> #=> toggles <code>:set paste</code>
 
-* Leader is set to <code>,</code>
+* lead is <code>,</code>
+
+##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)
+
+<code>:vsp .</code> #=> vertical split in cwd
+
+<code>:Vex .</code> #=> vertical split in file folder
+
+New file: <code>%</code>
+
+New folder: <code>d</code>
+
+<code>o</code> enter file/folder in horizontal split
+<code>v</code> enter file/folder in vertical split
+<code>t</code> enter file/folder in new tab
 
 #### Plugins
 
