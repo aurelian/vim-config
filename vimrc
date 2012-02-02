@@ -97,9 +97,6 @@ set anti       " antialias on
 set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
 
-" Save when losing focus
-au FocusLost * :wa
-
 set background=light
 
 let g:solarized_termtrans=1
@@ -142,6 +139,13 @@ au FileType c setlocal shiftwidth=4 softtabstop=4
 au FileType cpp setlocal shiftwidth=4 softtabstop=4
 " au Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
 " autocmd FileType javascript setlocal ai et sta sw=4 sts=4
+
+" Save when losing focus
+au FocusLost * :wa
+
+" reload vimrc on the fly
+" http://media.vimcasts.org/videos/24/vimrc_on_the_fly.m4v
+autocmd bufwritepost .vimrc source $MYVIMRC
 
 " w!! when you forgot sudo
 cmap w!! %!sudo tee > /dev/null %
