@@ -5,7 +5,7 @@ Install:
     git clone git://github.com/aurelian/vim-config.git ~/.vim
     ln -s ~/vimrc ~/.vimrc
 
-Some mappings in [vimrc](vim-config/blob/master/vimrc) are MacOS specific.
+Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimrc) are MacOS specific.
 
 #### Stuff I should use more often
 
