@@ -68,11 +68,11 @@ New folder: <code>d</code>
 
 * [vitality](https://github.com/sjl/vitality.vim)
 
-(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux.
+  (Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux.
 
 * [closetag](https://github.com/docunext/closetag.vim)
 
-Auto-close HTML/XML tags.
+  Auto-close HTML/XML tags.
 
 #### Syntax
 
