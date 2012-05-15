@@ -66,6 +66,14 @@ New folder: <code>d</code>
 
 * [vim-rails](https://github.com/tpope/vim-rails)
 
+* [vitality](https://github.com/sjl/vitality.vim)
+
+(Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux.
+
+* [closetag](https://github.com/docunext/closetag.vim)
+
+Auto-close HTML/XML tags.
+
 #### Syntax
 
 * [vim-handlebars](https://github.com/nono/vim-handlebars)
