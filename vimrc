@@ -47,6 +47,16 @@ function! RvmOrFiletype()
   endif
 endfunction
 
+function! SuperTab()
+  if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+    return "\<Tab>"
+  else
+    return "\<C-n>"
+  endif
+endfunction
+
+imap <Tab> <C-R>=SuperTab()<CR>
+
 " utf-8 everywere
 set encoding=utf-8
 set termencoding=utf-8
@@ -73,8 +83,8 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
-map >> gT
-map << gt
+map >> gt
+map << gT
 
 set laststatus=2  " always show status line
 
@@ -111,7 +121,9 @@ if has("gui_running")
   " colors mayansmoke
   set background=dark
   set cursorline
-  set guifont=Monaco:h11
+  set guifont=Inconsolata:h13
+  " set guifont=Monaco:h11
+  " set guifont=Comic\ Sans\ MS:h11
   set guioptions-=T  " no toolbar
   set guioptions-=r  " no right-hand scrollbar
   set guioptions-=L  " no left-hand scrollbar
