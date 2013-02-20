@@ -2,8 +2,9 @@
 
 Install:
 
+    cd ~
     git clone git://github.com/aurelian/vim-config.git ~/.vim
-    ln -s ~/vimrc ~/.vimrc
+    ln -s ~/.vim/vimrc .vimrc
 
 Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimrc) are MacOS specific.
 
@@ -17,7 +18,7 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * <code>cmd-e</code> #=> toggles <code>:set paste</code>
 
-* lead is <code>,</code>
+* leader is <code>,</code>
 
 ##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)
 

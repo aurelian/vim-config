@@ -86,6 +86,9 @@ cnoremap ## <C-R>=expand('%:h').'/'<cr>
 map >> gt
 map << gT
 
+nmap ¬ :wincmd l<CR>
+nmap ˙ :wincmd h<CR>
+
 set laststatus=2  " always show status line
 
 "set so=7       " 7 lines when scrolling vertically
@@ -107,7 +110,7 @@ set anti       " antialias on
 set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
 
-set background=light
+set background=dark
 
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
@@ -163,4 +166,28 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 cmap w!! %!sudo tee > /dev/null %
 
 let g:ackprg="ack -H --nocolor --nogroup --column --ruby"
+
+" Highlight trailing whitespace
+" http://stackoverflow.com/questions/356126/
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
+
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+au FileType c,cpp,java,php,javascript,ruby,html
+  \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
 
