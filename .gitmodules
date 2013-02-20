@@ -34,3 +34,6 @@
 [submodule "bundle/vitality.vim"]
 	path = bundle/vitality.vim
 	url = git://github.com/sjl/vitality.vim.git
+[submodule "bundle/vim-css-color"]
+	path = bundle/vim-css-color
+	url = git://github.com/ap/vim-css-color.git
