@@ -18,6 +18,10 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * <code>cmd-e</code> #=> toggles <code>:set paste</code>
 
+* <code>A</code> goes to end of line and changes to INSERT
+
+* <code>$/^</code> end of line / beggining of line
+
 * leader is <code>,</code>
 
 ##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)

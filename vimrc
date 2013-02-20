@@ -83,11 +83,18 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
+
+" tab movement
 map >> gt
 map << gT
 
+" window movement ALT-l / ALT-h
 nmap ¬ :wincmd l<CR>
 nmap ˙ :wincmd h<CR>
+
+" don't use linewise movement up/down -- http://statico.github.com/vim.html
+" nmap j gj
+" nmap k gk
 
 set laststatus=2  " always show status line
 
