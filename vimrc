@@ -47,6 +47,7 @@ function! RvmOrFiletype()
   endif
 endfunction
 
+" tab auto-complete
 function! SuperTab()
   if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
     return "\<Tab>"
@@ -116,6 +117,9 @@ set nuw=2      " line numbers of 2 cols
 set anti       " antialias on
 set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
+
+" vim gutter plugin is disabled by default
+let g:gitgutter_enabled = 0
 
 "set background=dark
 "let g:solarized_termtrans=1

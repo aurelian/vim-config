@@ -40,6 +40,12 @@ New folder: <code>d</code>
 
 #### Plugins
 
+* [vim-gutter](https://github.com/airblade/vim-gitgutter)
+
+  Disabled by default
+
+  toggle with ```:ToggleGitGutter```
+
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 
   Usage:
