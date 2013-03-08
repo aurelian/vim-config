@@ -117,13 +117,15 @@ set anti       " antialias on
 set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
 
-set background=dark
+"set background=dark
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+"colorscheme solarized
 
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+colorscheme lucius
+LuciusDarkHighContrast
 
 if has("gui_running")
   " colors molokai
