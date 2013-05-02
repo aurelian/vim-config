@@ -129,7 +129,7 @@ let g:gitgutter_enabled = 0
 "colorscheme solarized
 
 colorscheme lucius
-LuciusDarkHighContrast
+LuciusBlackLowContrast
 
 if has("gui_running")
   " colors molokai
@@ -170,6 +170,8 @@ au FileType cpp setlocal shiftwidth=4 softtabstop=4
 
 " Save when losing focus
 au FocusLost * :wa
+" Save when leaving insert mode
+autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 
 " reload vimrc on the fly
 " http://media.vimcasts.org/videos/24/vimrc_on_the_fly.m4v
