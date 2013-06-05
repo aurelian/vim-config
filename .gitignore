@@ -1,2 +1,4 @@
 .netrwhist
 *.swp
+.cache
+STUFF.md

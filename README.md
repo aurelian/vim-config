@@ -20,7 +20,7 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * <code>A</code> goes to end of line and changes to INSERT
 
-* <code>$/^</code> end of line / beggining of line
+* <code>$/^0</code> end of line / beggining of line
 
 * leader is <code>,</code>
 

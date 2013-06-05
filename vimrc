@@ -8,13 +8,12 @@ filetype plugin indent on
 let mapleader=','
 
 set t_Co=256
-set foldmethod=marker " | syntax
-set foldlevelstart=1
+
+" set foldmethod=marker " | syntax
+set foldmethod=syntax
+set foldlevelstart=99
 set foldnestmax=5
 set foldclose=all
-
-set nobackup                   " no backup
-set nowritebackup              " no backup during edit session
 
 set backspace=indent,eol,start " backspace over everything
 
@@ -65,13 +64,26 @@ set fileencoding=utf-8
 
 set showcmd
 set listchars=tab:▸\ ,eol:¬
-" set timeoutlen=50
-" set notimeout
-" set ttimeoutlen=50
+if exists('$TMUX')
+  set clipboard=
+else
+  set clipboard=unnamed                             " use system clipboard
+endif
+set timeoutlen=300   " mapping timeout
+set notimeout
+set ttimeoutlen=50   " keycode timeout
+
+set undofile
+set backup                     " no backup
+set nowritebackup              " no backup during edit session
+set noswapfile
+set undodir=~/.vim/.cache/undo
+set backupdir=~/.vim/.cache/backup
+set directory=~/.vim/.cache/swap
 
 " https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest:full                    "priority for tab completion
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -102,19 +114,25 @@ set laststatus=2  " always show status line
 "set so=7       " 7 lines when scrolling vertically
 set ffs=unix   " eol
 set showmatch  " show matching bracket
+" set showbreak=↪\
+set mouse=a   " enable mouse
+set mousehide " hide when typing stuff
+set ttyfast   " assume fast terminal connection
+
 
 set noerrorbells
 set novisualbell
-set vb t_vb=   " no bells
-set modeline   " show current mode
-set incsearch  " do incremental search
-set history=50 " keep 50 lines in history
-"set nowrap     " no wrap
-set hlsearch   " highlight search word
+set vb t_vb=     " no bells
+set modeline     " show current mode
+set incsearch    " do incremental search
+set history=1000 " keep 50 lines in history
+"set nowrap      " no wrap
+set hlsearch     " highlight search word
 set ruler
-set nu         " show line number
-set nuw=2      " line numbers of 2 cols
-set anti       " antialias on
+set nu           " show line number
+set nuw=2        " line numbers of 2 cols
+set anti         " antialias on
+
 set pastetoggle=<D-e> " toggle paste with -e
 set matchpairs+=<:>
 
