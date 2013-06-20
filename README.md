@@ -8,21 +8,29 @@ Install:
 
 Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimrc) are MacOS specific.
 
+#### Arrows are disabled in NORMAL mode
+
 #### Stuff I should use more often
 
 * <code>##</code> in cmd adds current path
 
-* <code>cmd-cr</code> toggles fullscreen (in mvim)
+* <code>cmd-cr</code> toggles fullscreen (in mvim, same shortcut as in iTerm2)
 
 * <code>:set (no)list</code> #=> hides/shows tabs and enters #=> usefull to detect spaces vs tabs
 
-* <code>cmd-e</code> #=> toggles <code>:set paste</code>
+* <code>F6/code> #=> toggles <code>:set paste</code>
 
-* <code>A</code> goes to end of line and changes to INSERT
+* <code>A</code> goes to end of line and changes to INSERT mode
+
+* <code>o</code> INSERT mode on next line
 
 * <code>$/^0</code> end of line / beggining of line
 
 * leader is <code>,</code>
+
+* paste on next line <code>,p</code>
+
+* <code>Ctrl-h</code> / <code>Ctrl-l</code> moves cursor left/right in INSERT mode
 
 ##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)
 
