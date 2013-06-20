@@ -15,6 +15,10 @@ set foldlevelstart=99
 set foldnestmax=5
 set foldclose=all
 
+"set title
+
+"set titlestring=%f
+
 set backspace=indent,eol,start " backspace over everything
 
 set tabstop=2     " size of a tab
@@ -64,14 +68,11 @@ set fileencoding=utf-8
 
 set showcmd
 set listchars=tab:▸\ ,eol:¬
-if exists('$TMUX')
-  set clipboard=
-else
-  set clipboard=unnamed                             " use system clipboard
-endif
-set timeoutlen=300   " mapping timeout
+set clipboard=unnamed                             " use system clipboard
+
+" set timeoutlen=300   " mapping timeout
 set notimeout
-set ttimeoutlen=50   " keycode timeout
+" set ttimeoutlen=50   " keycode timeout
 
 set undofile
 set backup                     " no backup
@@ -97,9 +98,18 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
 
+" paste on new line with ,p
+nnoremap <Leader>p o<C-R>"<Esc>
+
 " tab movement
-map >> gt
-map << gT
+" map >> gt
+" map << gT
+
+" hardcore level 1
+nnoremap <down> :bprev<CR>
+nnoremap <up> :bnext<CR>
+nnoremap <left> :tabprev<CR>
+nnoremap <right> :tabnext<CR>
 
 " window movement ALT-l / ALT-h
 nmap ¬ :wincmd l<CR>
@@ -109,16 +119,19 @@ nmap ˙ :wincmd h<CR>
 " nmap j gj
 " nmap k gk
 
+" change position of cursor in insert mode
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+
 set laststatus=2  " always show status line
 
 "set so=7       " 7 lines when scrolling vertically
 set ffs=unix   " eol
 set showmatch  " show matching bracket
 " set showbreak=↪\
-set mouse=a   " enable mouse
-set mousehide " hide when typing stuff
+" set mouse=a   " enable mouse
+" set mousehide " hide when typing stuff
 set ttyfast   " assume fast terminal connection
-
 
 set noerrorbells
 set novisualbell
@@ -133,7 +146,7 @@ set nu           " show line number
 set nuw=2        " line numbers of 2 cols
 set anti         " antialias on
 
-set pastetoggle=<D-e> " toggle paste with -e
+set pastetoggle=<F6> " toggle paste with -e
 set matchpairs+=<:>
 
 " vim gutter plugin is disabled by default
@@ -169,6 +182,12 @@ if has("gui_running")
   set statusline=[%{getcwd()}\%{GitBranch()}\]\ %f\ %2*%m\ %1*%h%r%=%{strlen(RvmOrFiletype())?RvmOrFiletype():'none'}\ 0x%B\ %12.(%c:%l/%L%)
 endif
 
+" Disable html5 stuff that I don't use
+let g:html5_event_handler_attributes_complete = 0
+let g:html5_rdfa_attributes_complete = 0
+let g:html5_microdata_attributes_complete = 0
+let g:html5_aria_attributes_complete = 0
+
 hi Todo guifg=#FF0000 guibg=#FF7F50
 hi TODO guifg=#FF0000 guibg=#FF7F50
 hi XXX  guifg=#FF0000 guibg=#FF7F50
@@ -193,7 +212,7 @@ autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 
 " reload vimrc on the fly
 " http://media.vimcasts.org/videos/24/vimrc_on_the_fly.m4v
-autocmd bufwritepost .vimrc source $MYVIMRC
+" autocmd bufwritepost .vimrc source $MYVIMRC
 
 " w!! when you forgot sudo
 cmap w!! %!sudo tee > /dev/null %
