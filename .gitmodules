@@ -46,9 +46,6 @@
 [submodule "bundle/vim-lucius"]
 	path = bundle/vim-lucius
 	url = git://github.com/jonathanfilip/vim-lucius.git
-[submodule "bundle/vim-gitgutter"]
-	path = bundle/vim-gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
 [submodule "bundle/go.vim"]
 	path = bundle/go.vim
 	url = git://github.com/golangtw/go.vim.git

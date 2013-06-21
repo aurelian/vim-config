@@ -145,23 +145,14 @@ set history=1000 " keep 50 lines in history
 "set nowrap      " no wrap
 set hlsearch     " highlight search word
 set ruler
-set nu           " show line number
+"set nu           " show line number
 set nuw=2        " line numbers of 2 cols
 set anti         " antialias on
 
 set pastetoggle=<F6> " toggle paste with -e
 set matchpairs+=<:>
 
-" vim gutter plugin is disabled by default
-let g:gitgutter_enabled = 0
-
-"set background=dark
-"let g:solarized_termtrans=1
-"let g:solarized_termcolors=256
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="high"
-"colorscheme solarized
-
+set background=dark
 colorscheme lucius
 LuciusBlackLowContrast
 

@@ -12,21 +12,21 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 #### Stuff I should use more often
 
+* leader is <code>,</code>
+
 * <code>##</code> in cmd adds current path
 
 * <code>cmd-cr</code> toggles fullscreen (in mvim, same shortcut as in iTerm2)
 
 * <code>:set (no)list</code> #=> hides/shows tabs and enters #=> usefull to detect spaces vs tabs
 
-* <code>F6/code> #=> toggles <code>:set paste</code>
+* <code>F6</code> #=> toggles <code>:set paste</code>
 
 * <code>A</code> goes to end of line and changes to INSERT mode
 
 * <code>o</code> INSERT mode on next line
 
 * <code>$/^0</code> end of line / beggining of line
-
-* leader is <code>,</code>
 
 * paste on next line <code>,p</code>
 
@@ -48,12 +48,6 @@ New folder: <code>d</code>
 
 #### Plugins
 
-* [vim-gutter](https://github.com/airblade/vim-gitgutter)
-
-  Disabled by default
-
-  toggle with ```:ToggleGitGutter```
-
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 
   Usage:
@@ -65,9 +59,11 @@ New folder: <code>d</code>
       <c-cr>, <c-s>, <c-x> Open selected file in a 'horizontal' split.
   ```
 
-* [ack](https://github.com/mileszs/ack.vim)
+* [ack](https://github.com/mileszs/ack.vim) / [ag](https://github.com/rking/ag.vim)
 
   <code>:Ack stuf*</code>
+
+  <code>:Ag stuf*</code>
 
   Usage:
 
@@ -80,8 +76,6 @@ New folder: <code>d</code>
       gv   to open in vertical split silently
       q    to close the quickfix window
   ```
-
-  Command is set to: <code>ack -H --nocolor --nogroup --column --ruby</code>
 
 * [vim-rails](https://github.com/tpope/vim-rails)
 
@@ -107,9 +101,13 @@ New folder: <code>d</code>
 
 * [vim-markdown](https://github.com/tpope/vim-markdown)
 
+* [go.vim](https://github.com/golangtw/go.vim)
+
 #### Colors
 
-* [solarized](http://github.com/altercation/vim-colors-solarized) default
+* [lucius](https://github.com/jonathanfilip/vim-lucius) default
+
+* [solarized](http://github.com/altercation/vim-colors-solarized)
 
 * [mayansmoke](https://github.com/vim-scripts/mayansmoke)
 
