@@ -30,6 +30,10 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * paste on next line <code>,p</code>
 
+* toggle line numbers with <code>,n</code>
+
+* Ctrl-o / Ctrl-i for jumps
+
 * <code>Ctrl-h</code> / <code>Ctrl-l</code> moves cursor left/right in INSERT mode
 
 ##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)
