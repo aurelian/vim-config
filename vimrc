@@ -15,9 +15,8 @@ set foldlevelstart=99
 set foldnestmax=5
 set foldclose=all
 
-"set title
-
-"set titlestring=%f
+set title
+set titlestring=%f
 
 set backspace=indent,eol,start " backspace over everything
 
@@ -98,18 +97,22 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
 
-" paste on new line with ,p
+" ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
+" ,n to toggle line number
+nnoremap <Leader>n :setlocal number!<CR>
+
+" hardcore level 1
+" up/down arrows move betweeen buffers
+nnoremap <down> :bprev<CR>
+nnoremap <up>   :bnext<CR>
+" left/ right arrows between tabs
+nnoremap <left> :tabprev<CR>
+nnoremap <right> :tabnext<CR>
 
 " tab movement
 " map >> gt
 " map << gT
-
-" hardcore level 1
-nnoremap <down> :bprev<CR>
-nnoremap <up> :bnext<CR>
-nnoremap <left> :tabprev<CR>
-nnoremap <right> :tabnext<CR>
 
 " window movement ALT-l / ALT-h
 nmap ¬ :wincmd l<CR>
