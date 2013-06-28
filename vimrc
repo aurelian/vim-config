@@ -1,32 +1,99 @@
 set nocompatible
+set t_Co=256
+
+let mapleader=','
 
 call pathogen#infect()
 
 syntax on
 filetype plugin indent on
 
-let mapleader=','
+" -- Formating
+set autoindent    " always set autoindenting on
+set expandtab     " spaces not tabs
+set nosmarttab    " tabs at start of lines
+set smartindent   " indents for you
+set tabstop=2     " size of a tab
+set shiftwidth=2  " size for auto/smartindent
+set softtabstop=2 " a tab is this size
 
-set t_Co=256
-
-" set foldmethod=marker " | syntax
-set foldmethod=syntax
+" -- Folding
+set foldmethod=indent
 set foldlevelstart=99
 set foldnestmax=5
 set foldclose=all
 
+" -- UTF-8 ALL THE THINGS
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,dos,mac " EOL formats
+
+" -- Commands
+set ruler          " show the line and column number of the cursor position
+set showcmd
+set history=8000   " keep 50 lines in history
+
+" -- Status line
+set laststatus=2  " always show status line
+set modeline      " show current mode
+
+" -- Paste
+set pastetoggle=<F6> " toggle paste with F6
+set nopaste
+
+" -- List
+set listchars=tab:▸\ ,eol:¬
+set nolist
+
+" -- Scrolling
+set so=5       " 5 lines when scrolling vertically
+set siso=5     " 5 lines in side (left) scroll
+
+" -- Title
 set title
 set titlestring=%f
 
-set backspace=indent,eol,start " backspace over everything
+" -- Backups / Undo / Swap files
+set undofile
+set backup                     " no backup
+set nowritebackup              " no backup during edit session
+set noswapfile
+set undodir=~/.vim/.cache/undo
+set backupdir=~/.vim/.cache/backup
+set directory=~/.vim/.cache/swap
 
-set tabstop=2     " size of a tab
-set shiftwidth=2  " size for auto/smartindent
-set softtabstop=2 " a tab is this size
-set expandtab     " spaces not tabs
-set smartindent   " indents for you
-set nosmarttab    " tabs at start of lines
-set autoindent    " always set autoindenting on
+" -- Wildmenu (Tab completion)
+"  inspiration: https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
+set wildmenu
+set wildmode=list:longest:full                    "priority for tab completion
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX stuff
+set wildignore+=tmp                              " Rails / Ruby stuff
+
+" -- Search
+set hlsearch     " highlight search word
+set incsearch    " do incremental search
+
+" -- Bells
+set noerrorbells
+set novisualbell
+set vb t_vb=     " no bells
+
+" -- Timeout mgmt
+set notimeout
+set timeoutlen=30 " mapping timeout
+set ttimeoutlen=5 " keycode timeout (don't delay when ESC is hit)
+
+" -- not sorted.
+
+set backspace=indent,eol,start " backspace over everything
+set clipboard=unnamed          " use system clipboard
 
 function! GitBranch()
     let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -60,38 +127,6 @@ endfunction
 
 imap <Tab> <C-R>=SuperTab()<CR>
 
-" utf-8 everywere
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-
-set showcmd
-set listchars=tab:▸\ ,eol:¬
-set clipboard=unnamed                             " use system clipboard
-
-" set timeoutlen=300   " mapping timeout
-set notimeout
-" set ttimeoutlen=50   " keycode timeout
-
-set undofile
-set backup                     " no backup
-set nowritebackup              " no backup during edit session
-set noswapfile
-set undodir=~/.vim/.cache/undo
-set backupdir=~/.vim/.cache/backup
-set directory=~/.vim/.cache/swap
-
-" https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
-set wildmenu
-set wildmode=list:longest:full                    "priority for tab completion
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX bullshit
-
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
@@ -101,6 +136,11 @@ cnoremap ## <C-R>=expand('%:h').'/'<cr>
 nnoremap <Leader>p o<C-R>"<Esc>
 " ,n to toggle line number
 nnoremap <Leader>n :setlocal number!<CR>
+" ,l to toggle list
+nnoremap <Leader>l :setlocal list!<CR>
+
+" ,l to toggle list
+nnoremap <Leader>g :GitGrep<space>
 
 " hardcore level 1
 " up/down arrows move betweeen buffers
@@ -126,35 +166,19 @@ nmap ˙ :wincmd h<CR>
 inoremap <C-h> <left>
 inoremap <C-l> <right>
 
-set laststatus=2  " always show status line
-
-"set so=7       " 7 lines when scrolling vertically
-set ffs=unix   " eol
 set showmatch  " show matching bracket
-" set showbreak=↪\
-" set mouse=a   " enable mouse
-" set mousehide " hide when typing stuff
 set ttyfast   " assume fast terminal connection
 
-set noerrorbells
-set novisualbell
-set vb t_vb=     " no bells
-set modeline     " show current mode
-set incsearch    " do incremental search
-set history=1000 " keep 50 lines in history
 "set nowrap      " no wrap
-set hlsearch     " highlight search word
-set ruler
 "set nu           " show line number
 set nuw=2        " line numbers of 2 cols
-set anti         " antialias on
 
-set pastetoggle=<F6> " toggle paste with -e
 set matchpairs+=<:>
 
-set background=dark
+set background=light
+"set background=dark
 colorscheme lucius
-LuciusBlackLowContrast
+LuciusWhiteHighContrast
 
 if has("gui_running")
   " colors molokai
@@ -211,7 +235,9 @@ autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 " w!! when you forgot sudo
 cmap w!! %!sudo tee > /dev/null %
 
-let g:ackprg="ack -H --nocolor --nogroup --column --ruby"
+"let g:ackprg="ack -H --nocolor --nogroup --column --ruby"
+
+let g:ackprg="ag --nogroup --nocolor --column"
 
 " Highlight trailing whitespace
 " http://stackoverflow.com/questions/356126/
