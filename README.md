@@ -52,6 +52,8 @@ New folder: <code>d</code>
 
 #### Plugins
 
+* [endwise](https://github.com/tpope/vim-endwise)
+
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 
   Usage:
@@ -63,11 +65,9 @@ New folder: <code>d</code>
       <c-cr>, <c-s>, <c-x> Open selected file in a 'horizontal' split.
   ```
 
-* [ack](https://github.com/mileszs/ack.vim) / [ag](https://github.com/rking/ag.vim)
+* [ack](https://github.com/mileszs/ack.vim)
 
   <code>:Ack stuf*</code>
-
-  <code>:Ag stuf*</code>
 
   Usage:
 
