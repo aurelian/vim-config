@@ -1,4 +1,6 @@
-set nocompatible
+s in NORMAL mode
+
+* <code>Ctrl-o</code> to run 1 command in INSERT modeet nocompatible
 set t_Co=256
 
 let mapleader=','
@@ -86,14 +88,16 @@ set novisualbell
 set vb t_vb=     " no bells
 
 " -- Timeout mgmt
-set notimeout
-set timeoutlen=30 " mapping timeout
-set ttimeoutlen=5 " keycode timeout (don't delay when ESC is hit)
+set timeoutlen=20 " mapping timeout
 
 " -- not sorted.
-
+set cursorline                 " highlight the screen line of the cursor
 set backspace=indent,eol,start " backspace over everything
 set clipboard=unnamed          " use system clipboard
+set showmatch                  " show matching bracket
+set ttyfast                    " assume fast terminal connection
+set nuw=2                      " line numbers of 2 cols
+set matchpairs+=<:>
 
 function! GitBranch()
     let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -130,6 +134,7 @@ imap <Tab> <C-R>=SuperTab()<CR>
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" -- Mappings
 cnoremap ## <C-R>=expand('%:h').'/'<cr>
 
 " ,p paste on new line
@@ -138,9 +143,24 @@ nnoremap <Leader>p o<C-R>"<Esc>
 nnoremap <Leader>n :setlocal number!<CR>
 " ,l to toggle list
 nnoremap <Leader>l :setlocal list!<CR>
-
-" ,l to toggle list
+" ,g for git grep
 nnoremap <Leader>g :GitGrep<space>
+" ,, un-highlight search matches
+nnoremap <leader><leader> :noh<CR>
+" ,< vertical resize window to 3/2, ,. vertical resize window to 2/3
+nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
+" text bubbling. http://vimcasts.org/episodes/bubbling-text/
+"nmap <C-Up> ddkP
+"nmap <C-Down> ddp
+
+" Tab/shift-tab to indent/outdent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+" Keep selection when indenting/outdenting.
+vnoremap > >gv
+vnoremap < <gv
 
 " hardcore level 1
 " up/down arrows move betweeen buffers
@@ -158,23 +178,15 @@ nnoremap <right> :tabnext<CR>
 nmap ¬ :wincmd l<CR>
 nmap ˙ :wincmd h<CR>
 
-" don't use linewise movement up/down -- http://statico.github.com/vim.html
-" nmap j gj
-" nmap k gk
+" Move by screen lines instead of file lines -- http://statico.github.com/vim.html
+nmap j gj
+nmap k gk
 
 " change position of cursor in insert mode
 inoremap <C-h> <left>
 inoremap <C-l> <right>
 
-set showmatch  " show matching bracket
-set ttyfast   " assume fast terminal connection
-
-"set nowrap      " no wrap
-"set nu           " show line number
-set nuw=2        " line numbers of 2 cols
-
-set matchpairs+=<:>
-
+" -- Color scheme / UI
 set background=light
 "set background=dark
 colorscheme lucius
@@ -185,10 +197,8 @@ if has("gui_running")
   " colors ir_black
   " colors mayansmoke
   set background=dark
-  set cursorline
   set guifont=Inconsolata:h13
   " set guifont=Monaco:h11
-  " set guifont=Comic\ Sans\ MS:h11
   set guioptions-=T  " no toolbar
   set guioptions-=r  " no right-hand scrollbar
   set guioptions-=L  " no left-hand scrollbar

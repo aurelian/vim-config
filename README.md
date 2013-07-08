@@ -18,7 +18,7 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * <code>cmd-cr</code> toggles fullscreen (in mvim, same shortcut as in iTerm2)
 
-* <code>:set (no)list</code> #=> hides/shows tabs and enters #=> usefull to detect spaces vs tabs
+* <code>:set (no)list</code> (,l) #=> hides/shows tabs and enters
 
 * <code>F6</code> #=> toggles <code>:set paste</code>
 
@@ -32,9 +32,13 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 * toggle line numbers with <code>,n</code>
 
-* Ctrl-o / Ctrl-i for jumps
+* <code>Ctrl-o</code> / <code>Ctrl-i</code> for jumps in NORMAL mode
+
+* <code>Ctrl-o</code> to run 1 command in INSERT mode
 
 * <code>Ctrl-h</code> / <code>Ctrl-l</code> moves cursor left/right in INSERT mode
+
+* fast vertical resize window <code>,&lt;</code><code>.&gt;</code>
 
 ##### Netrw - File Explorer [vimcast](http://vimcasts.org/e/15)
 
