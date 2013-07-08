@@ -1,6 +1,4 @@
-s in NORMAL mode
-
-* <code>Ctrl-o</code> to run 1 command in INSERT modeet nocompatible
+set nocompatible
 set t_Co=256
 
 let mapleader=','
