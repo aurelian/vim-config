@@ -86,7 +86,10 @@ set novisualbell
 set vb t_vb=     " no bells
 
 " -- Timeout mgmt
-set timeoutlen=20 " mapping timeout
+"set timeoutlen=20 " mapping timeout
+"set ttimeoutlen=20
+"set notimeout
+"set nottimeout
 
 " -- not sorted.
 set cursorline                 " highlight the screen line of the cursor
@@ -133,7 +136,7 @@ imap <Tab> <C-R>=SuperTab()<CR>
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " -- Mappings
-cnoremap ## <C-R>=expand('%:h').'/'<cr>
+cnoremap ## <C-R>=expand("%:h")."/"<cr>
 
 " ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
@@ -144,7 +147,7 @@ nnoremap <Leader>l :setlocal list!<CR>
 " ,g for git grep
 nnoremap <Leader>g :GitGrep<space>
 " ,, un-highlight search matches
-nnoremap <leader><leader> :noh<CR>
+nnoremap <Leader><Leader> :noh<CR>
 " ,< vertical resize window to 3/2, ,. vertical resize window to 2/3
 nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
@@ -214,6 +217,12 @@ let g:html5_rdfa_attributes_complete = 0
 let g:html5_microdata_attributes_complete = 0
 let g:html5_aria_attributes_complete = 0
 
+" closetag plugin
+let b:closetag_html_style=1
+
+" ack plugin command
+let g:ackprg="ag --nogroup --nocolor --column"
+
 hi Todo guifg=#FF0000 guibg=#FF7F50
 hi TODO guifg=#FF0000 guibg=#FF7F50
 hi XXX  guifg=#FF0000 guibg=#FF7F50
@@ -241,11 +250,9 @@ autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 " autocmd bufwritepost .vimrc source $MYVIMRC
 
 " w!! when you forgot sudo
-cmap w!! %!sudo tee > /dev/null %
+" cmap w!! %!sudo tee > /dev/null %
 
 "let g:ackprg="ack -H --nocolor --nogroup --column --ruby"
-
-let g:ackprg="ag --nogroup --nocolor --column"
 
 " Highlight trailing whitespace
 " http://stackoverflow.com/questions/356126/
