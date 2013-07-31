@@ -100,27 +100,6 @@ set ttyfast                    " assume fast terminal connection
 set nuw=2                      " line numbers of 2 cols
 set matchpairs+=<:>
 
-function! GitBranch()
-    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-    if branch != ''
-      return "(" . substitute(branch, '\n', '', 'g') . ")"
-    else
-      return ''
-    endif
-endfunction
-
-function! RvmOrFiletype()
-  if &filetype=='ruby'
-    let status = ''
-    if !empty($rvm_path)
-      let status = $rvm_ruby_string . "@" . $rvm_gemset_name
-    endif
-    return status
-  else
-    return strlen(&filetype)?&filetype:'none'
-  endif
-endfunction
-
 " tab auto-complete
 function! SuperTab()
   if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
@@ -171,12 +150,10 @@ nnoremap <up>   :bnext<CR>
 nnoremap <left> :tabprev<CR>
 nnoremap <right> :tabnext<CR>
 
-" tab movement
-" map >> gt
-" map << gT
-
-" window movement ALT-l / ALT-h
+" window movement alt + hjkl
 nmap ¬ :wincmd l<CR>
+nmap ˚ :wincmd k<CR>
+nmap ∆ :wincmd j<CR>
 nmap ˙ :wincmd h<CR>
 
 " Move by screen lines instead of file lines -- http://statico.github.com/vim.html
@@ -188,18 +165,12 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 
 " -- Color scheme / UI
-set background=light
-"set background=dark
+set background=dark
 colorscheme lucius
-LuciusWhiteHighContrast
+LuciusBlackHighContrast
 
 if has("gui_running")
-  " colors molokai
-  " colors ir_black
-  " colors mayansmoke
-  set background=dark
-  set guifont=Inconsolata:h13
-  " set guifont=Monaco:h11
+  set guifont=Monaco:h11
   set guioptions-=T  " no toolbar
   set guioptions-=r  " no right-hand scrollbar
   set guioptions-=L  " no left-hand scrollbar
@@ -208,7 +179,6 @@ if has("gui_running")
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
-  set statusline=[%{getcwd()}\%{GitBranch()}\]\ %f\ %2*%m\ %1*%h%r%=%{strlen(RvmOrFiletype())?RvmOrFiletype():'none'}\ 0x%B\ %12.(%c:%l/%L%)
 endif
 
 " Disable html5 stuff that I don't use
@@ -251,8 +221,6 @@ autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 
 " w!! when you forgot sudo
 " cmap w!! %!sudo tee > /dev/null %
-
-"let g:ackprg="ack -H --nocolor --nogroup --column --ruby"
 
 " Highlight trailing whitespace
 " http://stackoverflow.com/questions/356126/
