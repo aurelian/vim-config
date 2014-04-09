@@ -56,6 +56,10 @@ New folder: <code>d</code>
 
 #### Plugins
 
+* [emmet-vim](https://github.com/mattn/emmet-vim.git)
+
+  complete with <code>CTRL-y + ,</code>
+
 * [endwise](https://github.com/tpope/vim-endwise)
 
 * [ctrlp](https://github.com/kien/ctrlp.vim)

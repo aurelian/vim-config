@@ -47,7 +47,7 @@ set listchars=tab:▸\ ,eol:¬
 set nolist
 
 " -- Scrolling
-set so=5       " 5 lines when scrolling vertically
+set so=7       " 5 lines when scrolling vertically
 set siso=5     " 5 lines in side (left) scroll
 
 " -- Title
@@ -85,6 +85,12 @@ set noerrorbells
 set novisualbell
 set vb t_vb=     " no bells
 
+" -- All about numbers
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
+"autocmd FocusLost * :set number
+"autocmd FocusGained * :set relativenumber
+
 " -- Timeout mgmt
 "set timeoutlen=20 " mapping timeout
 "set ttimeoutlen=20
@@ -93,6 +99,10 @@ set vb t_vb=     " no bells
 
 " -- not sorted.
 set cursorline                 " highlight the screen line of the cursor
+"set colorcolumn=81
+"highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
+
 set backspace=indent,eol,start " backspace over everything
 set clipboard=unnamed          " use system clipboard
 set showmatch                  " show matching bracket
@@ -120,7 +130,7 @@ cnoremap ## <C-R>=expand("%:h")."/"<cr>
 " ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
 " ,n to toggle line number
-nnoremap <Leader>n :setlocal number!<CR>
+"nnoremap <Leader>n :setlocal number!<CR>
 " ,l to toggle list
 nnoremap <Leader>l :setlocal list!<CR>
 " ,g for git grep
@@ -130,6 +140,15 @@ nnoremap <Leader><Leader> :noh<CR>
 " ,< vertical resize window to 3/2, ,. vertical resize window to 2/3
 nnoremap <silent> <leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+" http://vimcasts.org/e/56
+nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
+" switch to light colorscheme
+nnoremap <Leader>a :colorscheme lucius<CR>:LuciusLightLowContrast<CR>
+
+map <leader>tn :tabnew<cr>
+
+" lol... actually I don't need SHIFT all the time
+nnoremap ; :
 
 " text bubbling. http://vimcasts.org/episodes/bubbling-text/
 "nmap <C-Up> ddkP
@@ -166,11 +185,13 @@ inoremap <C-l> <right>
 
 " -- Color scheme / UI
 set background=dark
-colorscheme lucius
-LuciusBlackHighContrast
+colorscheme jellybeans
+"colorscheme lucius
+"LuciusBlackHighContrast
 
 if has("gui_running")
   set guifont=Monaco:h11
+  " set guifont=CosmicSansNeueMono:h13
   set guioptions-=T  " no toolbar
   set guioptions-=r  " no right-hand scrollbar
   set guioptions-=L  " no left-hand scrollbar
