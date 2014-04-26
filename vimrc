@@ -98,11 +98,6 @@ set vb t_vb=     " no bells
 "set nottimeout
 
 " -- not sorted.
-set cursorline                 " highlight the screen line of the cursor
-"set colorcolumn=81
-"highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
-
 set backspace=indent,eol,start " backspace over everything
 set clipboard=unnamed          " use system clipboard
 set showmatch                  " show matching bracket
@@ -185,7 +180,18 @@ inoremap <C-l> <right>
 
 " -- Color scheme / UI
 set background=dark
-colorscheme jellybeans
+colorscheme base16-default
+
+set cursorline                 " highlight the screen line of the cursor
+highlight CursorLine ctermbg=None ctermfg=None cterm=bold
+autocmd InsertEnter * highlight CursorLine ctermbg=None ctermfg=None cterm=None
+autocmd InsertLeave * highlight CursorLine ctermbg=None ctermfg=None cterm=bold
+
+"highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
+
+"let base16colorspace=256
+"colorscheme jellybeans
 "colorscheme lucius
 "LuciusBlackHighContrast
 
