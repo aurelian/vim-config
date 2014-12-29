@@ -39,7 +39,7 @@ set laststatus=2  " always show status line
 set modeline      " show current mode
 
 " -- Paste
-set pastetoggle=<F6> " toggle paste with F6
+set pastetoggle=<Leader>m " toggle paste with F6
 set nopaste
 
 " -- List
@@ -57,11 +57,11 @@ set titlestring=%f
 " -- Backups / Undo / Swap files
 set undofile
 set backup                     " no backup
-set nowritebackup              " no backup during edit session
+"set nowritebackup              " no backup during edit session
 set noswapfile
-set undodir=~/.vim/.cache/undo
-set backupdir=~/.vim/.cache/backup
-set directory=~/.vim/.cache/swap
+set undodir=~/.vim/.cache/undo/
+set backupdir=~/.vim/.cache/backup/
+set directory=~/.vim/.cache/swap/
 
 " -- Wildmenu (Tab completion)
 "  inspiration: https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
@@ -140,10 +140,19 @@ nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 " switch to light colorscheme
 nnoremap <Leader>a :colorscheme lucius<CR>:LuciusLightLowContrast<CR>
 
-map <leader>tn :tabnew<cr>
+"map <leader>tn :tabnew<cr>
 
 " lol... actually I don't need SHIFT all the time
 nnoremap ; :
+
+" Don't move to next occurence when searching with *
+nnoremap * *<C-O>
+" Keep search to center of screen
+nnoremap N Nzzzv
+nnoremap n nzzzv
+" Easy to type.
+nnoremap H ^
+nnoremap L $
 
 " text bubbling. http://vimcasts.org/episodes/bubbling-text/
 "nmap <C-Up> ddkP
@@ -160,6 +169,8 @@ vnoremap < <gv
 " up/down arrows move betweeen buffers
 nnoremap <down> :bprev<CR>
 nnoremap <up>   :bnext<CR>
+" fast buffer switch
+nnoremap gb :ls<CR>:b<Space>
 " left/ right arrows between tabs
 nnoremap <left> :tabprev<CR>
 nnoremap <right> :tabnext<CR>
@@ -180,14 +191,21 @@ inoremap <C-l> <right>
 
 " -- Color scheme / UI
 set background=dark
-colorscheme base16-default
+colorscheme ir_black
+" let base16colorspace=256
+" colorscheme base16-default
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
 autocmd InsertEnter * highlight CursorLine ctermbg=None ctermfg=None cterm=None
 autocmd InsertLeave * highlight CursorLine ctermbg=None ctermfg=None cterm=bold
 
-"highlight ColorColumn ctermbg=magenta
+" highlight for tabs
+hi TabLineSel  ctermfg=Red ctermbg=Yellow cterm=bold
+hi TabLine     ctermfg=Darkblue ctermbg=Yellow
+hi TabLineFill ctermfg=None ctermbg=None
+
+" highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
 
 "let base16colorspace=256
@@ -242,6 +260,10 @@ au FocusLost * :wa
 " Save when leaving insert mode
 autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+" au BufNewFile * set noeol
+
 " reload vimrc on the fly
 " http://media.vimcasts.org/videos/24/vimrc_on_the_fly.m4v
 " autocmd bufwritepost .vimrc source $MYVIMRC
@@ -272,4 +294,10 @@ endfunction
 
 au FileType c,cpp,java,php,javascript,ruby,html
   \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+
+au VimEnter * RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 

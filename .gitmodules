@@ -37,9 +37,6 @@
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
@@ -73,3 +70,18 @@
 [submodule "bundle/base16-vim"]
 	path = bundle/base16-vim
 	url = git@github.com:chriskempson/base16-vim.git
+[submodule "bundle/rust.vim"]
+	path = bundle/rust.vim
+	url = git@github.com:wting/rust.vim.git
+[submodule "bundle/landscape.vim"]
+	path = bundle/landscape.vim
+	url = git@github.com:itchyny/landscape.vim.git
+[submodule "bundle/jajs.vim"]
+	path = bundle/jajs.vim
+	url = git@github.com:othree/yajs.vim.git
+[submodule "bundle/rainbow_parentheses.vim"]
+	path = bundle/rainbow_parentheses.vim
+	url = git@github.com:kien/rainbow_parentheses.vim.git
+[submodule "bundle/vim-brightest"]
+	path = bundle/vim-brightest
+	url = git@github.com:osyo-manga/vim-brightest.git
