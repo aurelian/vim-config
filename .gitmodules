@@ -82,6 +82,4 @@
 [submodule "bundle/rainbow_parentheses.vim"]
 	path = bundle/rainbow_parentheses.vim
 	url = git@github.com:kien/rainbow_parentheses.vim.git
-[submodule "bundle/vim-brightest"]
-	path = bundle/vim-brightest
-	url = git@github.com:osyo-manga/vim-brightest.git
+
