@@ -82,7 +82,9 @@
 [submodule "bundle/rainbow_parentheses.vim"]
 	path = bundle/rainbow_parentheses.vim
 	url = git@github.com:kien/rainbow_parentheses.vim.git
-
 [submodule "bundle/JavaScript-Indent"]
 	path = bundle/JavaScript-Indent
 	url = git@github.com:vim-scripts/JavaScript-Indent.git
+[submodule "bundle/vim-ruby-refactoring"]
+	path = bundle/vim-ruby-refactoring
+	url = git@github.com:ecomba/vim-ruby-refactoring.git
