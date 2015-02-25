@@ -79,6 +79,14 @@ set wildignore+=tmp                              " Rails / Ruby stuff
 " -- Search
 set hlsearch     " highlight search word
 set incsearch    " do incremental search
+set showmatch
+set ignorecase
+set smartcase
+set gdefault " no need to /g to replace all
+
+" Sane regexes
+nnoremap / /\v
+vnoremap / /\v
 
 " -- Bells
 set noerrorbells
@@ -100,7 +108,6 @@ set vb t_vb=     " no bells
 " -- not sorted.
 set backspace=indent,eol,start " backspace over everything
 set clipboard=unnamed          " use system clipboard
-set showmatch                  " show matching bracket
 set ttyfast                    " assume fast terminal connection
 set nuw=2                      " line numbers of 2 cols
 set matchpairs+=<:>
@@ -164,6 +171,8 @@ vnoremap <S-Tab> <gv
 " Keep selection when indenting/outdenting.
 vnoremap > >gv
 vnoremap < <gv
+" Select previously pasted content with ,v
+nnoremap <leader>v V`]
 
 " hardcore level 1
 " up/down arrows move betweeen buffers
@@ -180,14 +189,21 @@ nmap ¬ :wincmd l<CR>
 nmap ˚ :wincmd k<CR>
 nmap ∆ :wincmd j<CR>
 nmap ˙ :wincmd h<CR>
+" or ctrl + hjkl
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+nmap <c-h> <c-w>h
 
 " Move by screen lines instead of file lines -- http://statico.github.com/vim.html
 nmap j gj
 nmap k gk
 
 " change position of cursor in insert mode
-inoremap <C-h> <left>
-inoremap <C-l> <right>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+
+inoremap jj <Esc>:w<CR>
 
 " -- Color scheme / UI
 set background=dark
