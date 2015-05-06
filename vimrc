@@ -185,10 +185,10 @@ nnoremap <left> :tabprev<CR>
 nnoremap <right> :tabnext<CR>
 
 " window movement alt + hjkl
-nmap ¬ :wincmd l<CR>
-nmap ˚ :wincmd k<CR>
-nmap ∆ :wincmd j<CR>
-nmap ˙ :wincmd h<CR>
+"nmap ¬ :wincmd l<CR>
+"nmap ˚ :wincmd k<CR>
+"nmap ∆ :wincmd j<CR>
+"nmap ˙ :wincmd h<CR>
 " or ctrl + hjkl
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
@@ -260,25 +260,28 @@ hi XXX  guifg=#FF0000 guibg=#FF7F50
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
-au BufRead,BufNewFile *.scss  set filetype=scss
-" au BufRead,BufNewFile *.scss  set filetype=eruby
-au BufRead,BufNewFile Rakefile set filetype=ruby
-au BufRead,BufNewFile Guardfile set filetype=ruby
-au BufRead,BufNewFile Gemfile set filetype=ruby
+autocmd BufRead,BufNewFile *.scss  set filetype=scss
+" autocmd BufRead,BufNewFile *.scss  set filetype=eruby
+autocmd BufRead,BufNewFile Rakefile set filetype=ruby
+autocmd BufRead,BufNewFile Guardfile set filetype=ruby
+autocmd BufRead,BufNewFile Gemfile set filetype=ruby
+autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 
-au FileType c setlocal shiftwidth=4 softtabstop=4
-au FileType cpp setlocal shiftwidth=4 softtabstop=4
-" au Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
+autocmd FileType c setlocal shiftwidth=4 softtabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
+autocmd FileType rust setlocal shiftwidth=4 softtabstop=4
+autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4
+" autocmd Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
 " autocmd FileType javascript setlocal ai et sta sw=4 sts=4
 
 " Save when losing focus
-au FocusLost * :wa
+autocmd FocusLost * :wa
 " Save when leaving insert mode
 autocmd InsertLeave * if &modified && expand('%') != '' | write | endif
 
 " Resize splits when the window is resized
-au VimResized * exe "normal! \<c-w>="
-" au BufNewFile * set noeol
+autocmd VimResized * exe "normal! \<c-w>="
+" autocmd BufNewFile * set noeol
 
 " reload vimrc on the fly
 " http://media.vimcasts.org/videos/24/vimrc_on_the_fly.m4v
@@ -290,10 +293,10 @@ au VimResized * exe "normal! \<c-w>="
 " Highlight trailing whitespace
 " http://stackoverflow.com/questions/356126/
 highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace guibg=red
+autocmd BufEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
@@ -308,12 +311,12 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-au FileType c,cpp,java,php,javascript,ruby,html
-  \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,javascript,ruby,html
+  \ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 
-au VimEnter * RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+autocmd VimEnter * RainbowParenthesesActivate
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 
