@@ -77,16 +77,31 @@ set wildignore+=*.DS_Store                       " OSX stuff
 set wildignore+=tmp                              " Rails / Ruby stuff
 
 " -- Search
-set hlsearch     " highlight search word
+set hlsearch   " highlight search word
 set incsearch    " do incremental search
 set showmatch
 set ignorecase
 set smartcase
 set gdefault " no need to /g to replace all
 
+"https://github.com/toranb/dotfiles/blob/daf05812bed08b9c6d367aeb0b6ccd12764765dd/vimrc#L333-L340
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
+
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+
 " Sane regexes
 nnoremap / /\v
 vnoremap / /\v
+
+
 
 " -- Bells
 set noerrorbells
