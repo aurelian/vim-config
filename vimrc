@@ -1,7 +1,7 @@
 set nocompatible
 set t_Co=256
 
-let mapleader=','
+let mapleader="\<Space>"
 
 call pathogen#infect()
 
@@ -39,7 +39,7 @@ set laststatus=2  " always show status line
 set modeline      " show current mode
 
 " -- Paste
-set pastetoggle=<Leader>m " toggle paste with F6
+" set pastetoggle=<Leader>m " toggle paste
 set nopaste
 
 " -- List
@@ -100,8 +100,6 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 " Sane regexes
 nnoremap / /\v
 vnoremap / /\v
-
-
 
 " -- Bells
 set noerrorbells
@@ -186,7 +184,7 @@ vnoremap <S-Tab> <gv
 " Keep selection when indenting/outdenting.
 vnoremap > >gv
 vnoremap < <gv
-" Select previously pasted content with ,v
+" Select previously pasted content with Leader-v
 nnoremap <leader>v V`]
 
 " hardcore level 1
@@ -222,9 +220,10 @@ inoremap jj <Esc>:w<CR>
 
 " -- Color scheme / UI
 set background=dark
-colorscheme ir_black
-" let base16colorspace=256
+" colorscheme ir_black
+let base16colorspace=256
 " colorscheme base16-default
+colorscheme base16-atelierlakeside
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
