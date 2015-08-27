@@ -88,3 +88,6 @@
 [submodule "bundle/vim-over"]
 	path = bundle/vim-over
 	url = git@github.com:osyo-manga/vim-over.git
+[submodule "bundle/hive.vim"]
+	path = bundle/hive.vim
+	url = git@github.com:autowitch/hive.vim.git
