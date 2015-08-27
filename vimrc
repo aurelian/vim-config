@@ -96,6 +96,7 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+nnoremap <Leader>k :CtrlPBuffer<CR>
 
 " Sane regexes
 nnoremap / /\v
@@ -221,9 +222,13 @@ inoremap jj <Esc>:w<CR>
 " -- Color scheme / UI
 set background=dark
 " colorscheme ir_black
-let base16colorspace=256
+" let base16colorspace=256
 " colorscheme base16-default
-colorscheme base16-atelierlakeside
+" colorscheme base16-atelierlakeside
+" colorscheme solarized
+" colorscheme lucius
+" LuciusBlackHighContrast
+colorscheme jellybeans
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
@@ -237,11 +242,6 @@ hi TabLineFill ctermfg=None ctermbg=None
 
 " highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
-
-"let base16colorspace=256
-"colorscheme jellybeans
-"colorscheme lucius
-"LuciusBlackHighContrast
 
 if has("gui_running")
   set guifont=Monaco:h11
@@ -274,6 +274,7 @@ hi XXX  guifg=#FF0000 guibg=#FF7F50
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
+" autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.scss  set filetype=scss
 " autocmd BufRead,BufNewFile *.scss  set filetype=eruby
 autocmd BufRead,BufNewFile Rakefile set filetype=ruby
@@ -312,6 +313,12 @@ autocmd BufEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhiteSpace /\s\+$/
 
+" for .hql files
+autocmd BufNewFile,BufRead *.hql set filetype=hive expandtab
+"
+" for .q files
+autocmd BufNewFile,BufRead *.q set filetype=hive expandtab
+
 " Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
@@ -327,7 +334,6 @@ endfunction
 
 autocmd FileType c,cpp,java,php,javascript,ruby,html
   \ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 
 autocmd VimEnter * RainbowParenthesesActivate
 autocmd Syntax * RainbowParenthesesLoadRound
