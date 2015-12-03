@@ -3,6 +3,8 @@ set t_Co=256
 
 let mapleader="\<Space>"
 
+let g:clj_fmt_autosave = 0
+
 call pathogen#infect()
 
 syntax on
@@ -39,7 +41,7 @@ set laststatus=2  " always show status line
 set modeline      " show current mode
 
 " -- Paste
-" set pastetoggle=<Leader>m " toggle paste
+set pastetoggle=<F2> " toggle paste
 set nopaste
 
 " -- List
@@ -185,6 +187,7 @@ vnoremap <S-Tab> <gv
 " Keep selection when indenting/outdenting.
 vnoremap > >gv
 vnoremap < <gv
+vnoremap // y/<C-R>"<CR>
 " Select previously pasted content with Leader-v
 nnoremap <leader>v V`]
 
