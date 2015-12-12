@@ -12,31 +12,29 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 
 #### Stuff I should use more often
 
-* leader is <code>,</code>
+* leader is <code> </code>
 
 * <code>##</code> in cmd adds current path
 
 * <code>cmd-cr</code> toggles fullscreen (in mvim, same shortcut as in iTerm2)
 
-* <code>:set (no)list</code> (,l) #=> hides/shows tabs and enters
-
-* <code>F6</code> #=> toggles <code>:set paste</code>
+* <code>:set (no)list</code> ( l) #=> hides/shows tabs and enters
 
 * <code>A</code> goes to end of line and changes to INSERT mode
 
 * <code>o</code> INSERT mode on next line
 
-* <code>$/^0</code> end of line / beggining of line
+* <code>$/^0</code> end of line / beggining of line, same as <code>H/L</code>
 
-* paste on next line <code>,p</code>
-
-* toggle line numbers with <code>,n</code>
+* paste on next line <code> p</code>
 
 * <code>Ctrl-o</code> / <code>Ctrl-i</code> for jumps in NORMAL mode
 
 * <code>Ctrl-o</code> to run 1 command in INSERT mode
 
 * <code>Ctrl-h</code> / <code>Ctrl-l</code> moves cursor left/right in INSERT mode
+
+* <code>Ctrl-r "</code> paste yanked text in command
 
 * fast vertical resize window <code>,&lt;</code><code>.&gt;</code>
 
