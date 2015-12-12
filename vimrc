@@ -76,7 +76,9 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX stuff
-set wildignore+=tmp                              " Rails / Ruby stuff
+set wildignore+=*/node_modules/*
+set wildignore+=*/bower_components/*
+set wildignore+=*/tmp/*                          " Rails / Ruby stuff
 
 " -- Search
 set hlsearch   " highlight search word
@@ -99,6 +101,7 @@ endfunction
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 nnoremap <Leader>k :CtrlPBuffer<CR>
+" nnoremap <Leader>lp :CtrlP<CR>
 
 " Sane regexes
 nnoremap / /\v
