@@ -282,6 +282,7 @@ autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.c :%s/\s\+$//e
 " autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.scss  set filetype=scss
+autocmd BufRead,BufNewFile *.boot  set filetype=clojure
 " autocmd BufRead,BufNewFile *.scss  set filetype=eruby
 autocmd BufRead,BufNewFile Rakefile set filetype=ruby
 autocmd BufRead,BufNewFile Guardfile set filetype=ruby
