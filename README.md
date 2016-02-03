@@ -4,6 +4,8 @@ Install:
 
     cd ~
     git clone git://github.com/aurelian/vim-config.git ~/.vim
+    git sumbmodule init
+    git submodule update
     ln -s ~/.vim/vimrc .vimrc
 
 Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimrc) are MacOS specific.
@@ -15,6 +17,8 @@ Some mappings in [vimrc](https://github.com/aurelian/vim-config/blob/master/vimr
 * leader is <code> </code>
 
 * <code>##</code> in cmd adds current path
+
+* [text object selection](http://vimdoc.sourceforge.net/htmldoc/motion.html#object-select) and vim-surround
 
 * <code>cmd-cr</code> toggles fullscreen (in mvim, same shortcut as in iTerm2)
 
@@ -54,12 +58,6 @@ New folder: <code>d</code>
 
 #### Plugins
 
-* [emmet-vim](https://github.com/mattn/emmet-vim.git)
-
-  complete with <code>CTRL-y + ,</code>
-
-* [endwise](https://github.com/tpope/vim-endwise)
-
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 
   Usage:
@@ -86,38 +84,4 @@ New folder: <code>d</code>
       gv   to open in vertical split silently
       q    to close the quickfix window
   ```
-
-* [vim-rails](https://github.com/tpope/vim-rails)
-
-* [vitality](https://github.com/sjl/vitality.vim)
-
-  (Vit)ality is a plugin that makes (V)im play nicely with (i)Term 2 and (t)mux.
-
-* [closetag](https://github.com/docunext/closetag.vim)
-
-  Auto-close HTML/XML tags.
-
-#### Syntax
-
-* [vim-handlebars](https://github.com/nono/vim-handlebars)
-
-* [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
-
-* [scss-syntax.vim](http://github.com/cakebaker/scss-syntax.vim)
-
-* [textile.vim](https://github.com/timcharper/textile.vim)
-
-  <code>:TextilePreview</code> # => previews the buffer
-
-* [vim-markdown](https://github.com/tpope/vim-markdown)
-
-* [go.vim](https://github.com/golangtw/go.vim)
-
-#### Colors
-
-* [lucius](https://github.com/jonathanfilip/vim-lucius) default
-
-* [solarized](http://github.com/altercation/vim-colors-solarized)
-
-* [mayansmoke](https://github.com/vim-scripts/mayansmoke)
 
