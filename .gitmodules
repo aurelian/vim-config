@@ -31,9 +31,6 @@
 [submodule "bundle/closetag.vim"]
 	path = bundle/closetag.vim
 	url = git://github.com/docunext/closetag.vim.git
-[submodule "bundle/vitality.vim"]
-	path = bundle/vitality.vim
-	url = git://github.com/sjl/vitality.vim.git
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
@@ -58,12 +55,6 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "bundle/surround.vim"]
-	path = bundle/surround.vim
-	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/emmet-vim"]
-	path = bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim.git
 [submodule "bundle/base16-vim"]
 	path = bundle/base16-vim
 	url = git@github.com:chriskempson/base16-vim.git
@@ -106,3 +97,6 @@
 [submodule "bundle/vim-cljfmt"]
 	path = bundle/vim-cljfmt
 	url = https://github.com/venantius/vim-cljfmt.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git@github.com:tpope/vim-surround.git
