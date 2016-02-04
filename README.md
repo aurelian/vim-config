@@ -58,6 +58,14 @@ New folder: <code>d</code>
 
 #### Plugins
 
+* [vim-dispatch]()
+
+  ```
+  F9 mapped to :Dispatch
+  :Focus bundle exec rspec " changes Focus to command
+  :Dispatch bundle exec rake db:migrate
+  ```
+
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 
   Usage:
