@@ -100,7 +100,7 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
-nnoremap <Leader>k :CtrlPBuffer<CR>
+" nnoremap <Leader>k :CtrlPBuffer<CR>
 " nnoremap <Leader>lp :CtrlP<CR>
 
 " Sane regexes
@@ -147,6 +147,9 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " -- Mappings
 cnoremap ## <C-R>=expand("%:h")."/"<cr>
+
+" F9 to Dispatch.
+nnoremap <F9> :Dispatch<CR>
 
 " ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
