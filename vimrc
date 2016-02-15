@@ -81,8 +81,8 @@ set wildignore+=*/bower_components/*
 set wildignore+=*/tmp/*                          " Rails / Ruby stuff
 
 " -- Search
-set hlsearch   " highlight search word
-set incsearch    " do incremental search
+set hlsearch     " highlight search word
+set incsearch    " show match while typing
 set showmatch
 set ignorecase
 set smartcase
@@ -100,8 +100,6 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
-" nnoremap <Leader>k :CtrlPBuffer<CR>
-" nnoremap <Leader>lp :CtrlP<CR>
 
 " Sane regexes
 nnoremap / /\v
@@ -150,6 +148,8 @@ cnoremap ## <C-R>=expand("%:h")."/"<cr>
 
 " F9 to Dispatch.
 nnoremap <F9> :Dispatch<CR>
+" F8. gf in vertical split
+nnoremap <F8> :vertical wincmd f<CR>
 
 " ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
@@ -158,7 +158,7 @@ nnoremap <Leader>p o<C-R>"<Esc>
 " ,l to toggle list
 nnoremap <Leader>l :setlocal list!<CR>
 " ,g for git grep
-nnoremap <Leader>g :GitGrep<space>
+" nnoremap <Leader>g :GitGrep<space>
 " ,, un-highlight search matches
 nnoremap <Leader><Leader> :noh<CR>
 " ,< vertical resize window to 3/2, ,. vertical resize window to 2/3
@@ -168,8 +168,6 @@ nnoremap <silent> <leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 " switch to light colorscheme
 nnoremap <Leader>a :colorscheme lucius<CR>:LuciusLightLowContrast<CR>
-
-"map <leader>tn :tabnew<cr>
 
 " lol... actually I don't need SHIFT all the time
 nnoremap ; :
@@ -207,12 +205,7 @@ nnoremap gb :ls<CR>:b<Space>
 nnoremap <left> :tabprev<CR>
 nnoremap <right> :tabnext<CR>
 
-" window movement alt + hjkl
-"nmap ¬ :wincmd l<CR>
-"nmap ˚ :wincmd k<CR>
-"nmap ∆ :wincmd j<CR>
-"nmap ˙ :wincmd h<CR>
-" or ctrl + hjkl
+" move between windows with ctrl + hjkl
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
@@ -226,6 +219,7 @@ nmap k gk
 inoremap <c-h> <left>
 inoremap <c-l> <right>
 
+" save with jj
 inoremap jj <Esc>:w<CR>
 
 " -- Color scheme / UI
