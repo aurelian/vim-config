@@ -56,6 +56,14 @@ New folder: <code>d</code>
 <code>v</code> enter file/folder in vertical split
 <code>t</code> enter file/folder in new tab
 
+#### Working with splits
+
+ * ```ctrl + w _``` maxout height of current split
+ * ```ctrl + w |``` maxout width of current split
+ * ```ctlr + w =``` normalize size
+ * ```ctlr + w o``` closes all windows but current one
+ * ```ctrl + w T``` move split to own tab
+
 #### Plugins
 
 * [vim-dispatch]()

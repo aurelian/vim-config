@@ -103,3 +103,6 @@
 [submodule "bundle/vim-slim"]
 	path = bundle/vim-slim
 	url = git@github.com:slim-template/vim-slim.git
+[submodule "bundle/elm.vim"]
+	path = bundle/elm.vim
+	url = https://github.com/lambdatoast/elm.vim.git

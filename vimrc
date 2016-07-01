@@ -40,6 +40,10 @@ set history=8000   " keep 50 lines in history
 set laststatus=2  " always show status line
 set modeline      " show current mode
 
+" -- Splits
+set splitbelow
+set splitright
+
 " -- Paste
 set pastetoggle=<F2> " toggle paste
 set nopaste
@@ -225,13 +229,13 @@ inoremap jj <Esc>:w<CR>
 " -- Color scheme / UI
 set background=dark
 " colorscheme ir_black
-" let base16colorspace=256
+let base16colorspace=256
 " colorscheme base16-default
 " colorscheme base16-atelierlakeside
-" colorscheme solarized
-" colorscheme lucius
-" LuciusBlackHighContrast
-colorscheme jellybeans
+colorscheme koehler
+"colorscheme lucius
+"LuciusBlackHighContrast
+" colorscheme jellybeans
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
@@ -257,6 +261,7 @@ if has("gui_running")
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
+  colorscheme base16-atelierdune
 endif
 
 " Disable html5 stuff that I don't use
