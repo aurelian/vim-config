@@ -238,10 +238,11 @@ set background=dark
 let base16colorspace=256
 " colorscheme base16-default
 " colorscheme base16-atelierlakeside
-colorscheme koehler
+"colorscheme koehler
 "colorscheme lucius
 "LuciusBlackHighContrast
 " colorscheme jellybeans
+colorscheme iceberg
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
