@@ -132,6 +132,7 @@ set clipboard=unnamed          " use system clipboard
 set ttyfast                    " assume fast terminal connection
 set nuw=2                      " line numbers of 2 cols
 set matchpairs+=<:>
+" set iskeyword-=_               " include _ as a word boundary
 
 " tab auto-complete
 function! SuperTab()
@@ -226,6 +227,11 @@ inoremap <c-l> <right>
 " save with jj
 inoremap jj <Esc>:w<CR>
 
+" cursor mode change -- https://github.com/mhinz/vim-galore/blob/master/README.md#change-cursor-style-dependent-on-mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+
 " -- Color scheme / UI
 set background=dark
 " colorscheme ir_black
@@ -280,8 +286,8 @@ hi Todo guifg=#FF0000 guibg=#FF7F50
 hi TODO guifg=#FF0000 guibg=#FF7F50
 hi XXX  guifg=#FF0000 guibg=#FF7F50
 
-autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.c :%s/\s\+$//e
+" autocmd BufWritePre *.rb :%s/\s\+$//e
+" autocmd BufWritePre *.c :%s/\s\+$//e
 " autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.scss  set filetype=scss
 autocmd BufRead,BufNewFile *.boot  set filetype=clojure
