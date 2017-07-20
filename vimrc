@@ -234,7 +234,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 
 " -- Color scheme / UI
 set background=dark
-colorscheme srcery
 " colorscheme ir_black
 let base16colorspace=256
 " colorscheme base16-default
@@ -243,7 +242,7 @@ let base16colorspace=256
 "colorscheme lucius
 "LuciusBlackHighContrast
 " colorscheme jellybeans
-" colorscheme iceberg
+colorscheme iceberg
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold

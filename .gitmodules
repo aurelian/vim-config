@@ -106,3 +106,6 @@
 [submodule "bundle/iceberg.vim"]
 	path = bundle/iceberg.vim
 	url = https://github.com/cocopon/iceberg.vim
+[submodule "bundle/vim-srcery"]
+	path = bundle/vim-srcery
+	url = https://github.com/roosta/vim-srcery.git
