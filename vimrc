@@ -297,6 +297,7 @@ autocmd BufRead,BufNewFile Rakefile set filetype=ruby
 autocmd BufRead,BufNewFile Guardfile set filetype=ruby
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 autocmd FileType c setlocal shiftwidth=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
