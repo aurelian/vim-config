@@ -162,6 +162,7 @@ nnoremap <Leader>p o<C-R>"<Esc>
 "nnoremap <Leader>n :setlocal number!<CR>
 " ,l to toggle list
 nnoremap <Leader>l :setlocal list!<CR>
+nnoremap <Leader>e :normal ggg?VG<CR>
 " ,g for git grep
 " nnoremap <Leader>g :GitGrep<space>
 " ,, un-highlight search matches
@@ -211,10 +212,11 @@ nnoremap <left> :tabprev<CR>
 nnoremap <right> :tabnext<CR>
 
 " move between windows with ctrl + hjkl
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-l> <c-w>l
-nmap <c-h> <c-w>h
+" disabled because of vim-tmux-navigator
+" nmap <c-j> <c-w>j
+" nmap <c-k> <c-w>k
+" nmap <c-l> <c-w>l
+" nmap <c-h> <c-w>h
 
 " Move by screen lines instead of file lines -- http://statico.github.com/vim.html
 nmap j gj
@@ -226,6 +228,10 @@ inoremap <c-l> <right>
 
 " save with jj
 inoremap jj <Esc>:w<CR>
+" ii exits insert mode
+" imap ii <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " cursor mode change -- https://github.com/mhinz/vim-galore/blob/master/README.md#change-cursor-style-dependent-on-mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -234,15 +240,8 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 
 " -- Color scheme / UI
 set background=dark
-" colorscheme ir_black
 let base16colorspace=256
-" colorscheme base16-default
-" colorscheme base16-atelierlakeside
-"colorscheme koehler
-"colorscheme lucius
-"LuciusBlackHighContrast
-" colorscheme jellybeans
-colorscheme iceberg
+colorscheme srcery
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
@@ -292,19 +291,17 @@ hi XXX  guifg=#FF0000 guibg=#FF7F50
 " autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.scss  set filetype=scss
 autocmd BufRead,BufNewFile *.boot  set filetype=clojure
-" autocmd BufRead,BufNewFile *.scss  set filetype=eruby
 autocmd BufRead,BufNewFile Rakefile set filetype=ruby
 autocmd BufRead,BufNewFile Guardfile set filetype=ruby
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 autocmd BufRead,BufNewFile *.es6 set filetype=javascript
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 autocmd FileType c setlocal shiftwidth=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
 autocmd FileType rust setlocal shiftwidth=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4
-" autocmd Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
-" autocmd FileType javascript setlocal ai et sta sw=4 sts=4
+
+autocmd BufRead,BufNewFile **/spec/*_spec.rb let b:dispatch = 'bundle exec rspec %'
 
 " Save when losing focus
 autocmd FocusLost * :wa

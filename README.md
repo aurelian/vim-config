@@ -56,6 +56,12 @@ New folder: <code>d</code>
 <code>v</code> enter file/folder in vertical split
 <code>t</code> enter file/folder in new tab
 
+#### Working with qucikfix window
+
+* ```:copen```
+* ```:ccl``` close
+* ```:cn``` goes to next error
+
 #### Working with splits
 
  * ```ctrl + w _``` maxout height of current split
