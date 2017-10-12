@@ -50,7 +50,9 @@ set nopaste
 
 " -- List
 set listchars=tab:▸\ ,eol:¬
-set nolist
+"set list
+set nu
+set rnu
 
 " -- Scrolling
 set so=7       " 5 lines when scrolling vertically
@@ -104,6 +106,8 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+nnoremap <leader>s byw:Ack <C-r>"
+nnoremap <leader>c :ccl<CR>
 
 " Sane regexes
 nnoremap / /\v
@@ -156,12 +160,16 @@ nnoremap <F9> :Dispatch<CR>
 " F8. gf in vertical split
 nnoremap <F8> :vertical wincmd f<CR>
 
+" select till end/beginning of line
+vmap L $
+vmap H ^
+
 " ,p paste on new line
 nnoremap <Leader>p o<C-R>"<Esc>
 " ,n to toggle line number
 "nnoremap <Leader>n :setlocal number!<CR>
 " ,l to toggle list
-nnoremap <Leader>l :setlocal list!<CR>
+" nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>e :normal ggg?VG<CR>
 " ,g for git grep
 " nnoremap <Leader>g :GitGrep<space>
@@ -241,10 +249,12 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 " -- Color scheme / UI
 set background=dark
 let base16colorspace=256
-colorscheme srcery
+colorscheme codedark
+"colorscheme srcery
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
+" highlight CursorLine ctermbg=8 ctermfg=None
 autocmd InsertEnter * highlight CursorLine ctermbg=None ctermfg=None cterm=None
 autocmd InsertLeave * highlight CursorLine ctermbg=None ctermfg=None cterm=bold
 
@@ -282,6 +292,9 @@ let b:closetag_html_style=1
 " ack plugin command
 let g:ackprg="ag --nogroup --nocolor --column"
 
+" jsx plugin: enable jsx in .js files
+let g:jsx_ext_required = 0
+
 hi Todo guifg=#FF0000 guibg=#FF7F50
 hi TODO guifg=#FF0000 guibg=#FF7F50
 hi XXX  guifg=#FF0000 guibg=#FF7F50
@@ -299,7 +312,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd FileType c setlocal shiftwidth=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
 autocmd FileType rust setlocal shiftwidth=4 softtabstop=4
-autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4
+" autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4
 
 autocmd BufRead,BufNewFile **/spec/*_spec.rb let b:dispatch = 'bundle exec rspec %'
 
