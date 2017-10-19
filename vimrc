@@ -51,12 +51,12 @@ set nopaste
 " -- List
 set listchars=tab:▸\ ,eol:¬
 "set list
-set nu
-set rnu
+"set nu
+"set rnu
 
 " -- Scrolling
-set so=7       " 5 lines when scrolling vertically
-set siso=5     " 5 lines in side (left) scroll
+set so=8       " 5 lines when scrolling vertically
+set siso=6     " 5 lines in side (left) scroll
 
 " -- Title
 set title
@@ -75,6 +75,7 @@ set directory=~/.vim/.cache/swap/
 "  inspiration: https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 set wildmenu
 set wildmode=list:longest:full                    "priority for tab completion
+
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -92,13 +93,14 @@ set incsearch    " show match while typing
 set showmatch
 set ignorecase
 set smartcase
-set gdefault " no need to /g to replace all
+" set gdefault " no need to /g to replace all
 
 "https://github.com/toranb/dotfiles/blob/daf05812bed08b9c6d367aeb0b6ccd12764765dd/vimrc#L333-L340
 function! VisualFindAndReplace()
     :OverCommandLine%s/
     :w
 endfunction
+
 function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
     :w
@@ -108,7 +110,7 @@ nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 nnoremap <leader>s byw:Ack <C-r>"
 nnoremap <leader>c :ccl<CR>
-
+" nnoremap <silent> <buffer> c :ccl<CR>
 " Sane regexes
 nnoremap / /\v
 vnoremap / /\v
@@ -156,7 +158,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 cnoremap ## <C-R>=expand("%:h")."/"<cr>
 
 " F9 to Dispatch.
-nnoremap <F9> :Dispatch<CR>
+nnoremap <F9> :Dispatch
 " F8. gf in vertical split
 nnoremap <F8> :vertical wincmd f<CR>
 
@@ -250,7 +252,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 set background=dark
 let base16colorspace=256
 colorscheme codedark
-"colorscheme srcery
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
@@ -264,11 +265,10 @@ hi TabLine     ctermfg=Darkblue ctermbg=Yellow
 hi TabLineFill ctermfg=None ctermbg=None
 
 " highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 80 lines in a column
+call matchadd('ColorColumn', '\%81v', 100) " warn me only when passing over 100 lines in a column
 
 if has("gui_running")
   set guifont=Monaco:h11
-  " set guifont=CosmicSansNeueMono:h13
   set guioptions-=T  " no toolbar
   set guioptions-=r  " no right-hand scrollbar
   set guioptions-=L  " no left-hand scrollbar
@@ -277,7 +277,8 @@ if has("gui_running")
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
-  colorscheme base16-atelierdune
+  colorscheme codedark
+  set nu
 endif
 
 " Disable html5 stuff that I don't use
@@ -290,10 +291,14 @@ let g:html5_aria_attributes_complete = 0
 let b:closetag_html_style=1
 
 " ack plugin command
-let g:ackprg="ag --nogroup --nocolor --column"
+let g:ackprg="ag --vimgrep --nogroup --nocolor --column"
 
 " jsx plugin: enable jsx in .js files
 let g:jsx_ext_required = 0
+
+set rtp+=/usr/local/opt/fzf
+
+nmap ' :Files<CR>
 
 hi Todo guifg=#FF0000 guibg=#FF7F50
 hi TODO guifg=#FF0000 guibg=#FF7F50

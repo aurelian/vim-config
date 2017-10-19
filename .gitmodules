@@ -51,7 +51,7 @@
 	url = https://github.com/aurelian/git-grep-vim
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
+	url = https://github.com/vim-airline/vim-airline
 [submodule "bundle/base16-vim"]
 	path = bundle/base16-vim
 	url = git@github.com:chriskempson/base16-vim.git
@@ -118,3 +118,9 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "bundle/fzf.vim"]
+	path = bundle/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
+[submodule "bundle/lightline"]
+	path = bundle/lightline
+	url = https://github.com/itchyny/lightline.vim

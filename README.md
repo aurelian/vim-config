@@ -4,6 +4,7 @@ Install:
 
     cd ~
     git clone git://github.com/aurelian/vim-config.git ~/.vim
+    brew bundle install
     git sumbmodule init
     git submodule update
     ln -s ~/.vim/vimrc .vimrc
@@ -58,21 +59,21 @@ New folder: <code>d</code>
 
 #### Working with qucikfix window
 
-* ```:copen```
-* ```:ccl``` close
-* ```:cn``` goes to next error
+ * `:copen`
+ * `:ccl` close (mapped to `<leader-c>`)
+ * `:cn` goes to next error
 
 #### Working with splits
 
- * ```ctrl + w _``` maxout height of current split
- * ```ctrl + w |``` maxout width of current split
- * ```ctlr + w =``` normalize size
- * ```ctlr + w o``` closes all windows but current one
- * ```ctrl + w T``` move split to own tab
+ * `ctrl + w _` maxout height of current split
+ * `ctrl + w |` maxout width of current split
+ * `ctlr + w =` normalize size
+ * `ctlr + w o` closes all windows but current one
+ * `ctrl + w T` move split to own tab
 
 #### Plugins
 
-* [vim-dispatch]()
+ * [vim-dispatch]()
 
   ```
   F9 mapped to :Dispatch
@@ -80,20 +81,20 @@ New folder: <code>d</code>
   :Dispatch bundle exec rake db:migrate
   ```
 
-* [ctrlp](https://github.com/kien/ctrlp.vim)
+ * [fzf](https://github.com/kien/ctrlp.vim)
 
-  Usage:
+Usage:
 
-  ```
-    <c-p>
-      <c-t> Open selected file in a new 'tab' after the last tabpage.
-      <c-v> Open selected file in a 'vertical' split.
-      <c-cr>, <c-s>, <c-x> Open selected file in a 'horizontal' split.
-  ```
+```
+; mapped to :Files in normal mode
+<c-t> Open selected file in a new 'tab' after the last tabpage.
+<c-x> Open selected file in a split.
+<c-v> Open selected file in a vsplit.
+```
 
-* [ack](https://github.com/mileszs/ack.vim)
+ * [ack](https://github.com/mileszs/ack.vim)
 
-  <code>:Ack stuf*</code>
+`:Ack stuf`
 
   Usage:
 
