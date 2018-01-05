@@ -223,10 +223,10 @@ nnoremap <right> :tabnext<CR>
 
 " move between windows with ctrl + hjkl
 " disabled because of vim-tmux-navigator
-" nmap <c-j> <c-w>j
-" nmap <c-k> <c-w>k
-" nmap <c-l> <c-w>l
-" nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
+nmap <c-h> <c-w>h
 
 " Move by screen lines instead of file lines -- http://statico.github.com/vim.html
 nmap j gj
@@ -249,9 +249,13 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 
 " -- Color scheme / UI
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 set background=dark
 let base16colorspace=256
-colorscheme codedark
 
 set cursorline                 " highlight the screen line of the cursor
 highlight CursorLine ctermbg=None ctermfg=None cterm=bold
@@ -277,8 +281,10 @@ if has("gui_running")
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
-  colorscheme codedark
+  colorscheme OceanicNext
   set nu
+else
+  colorscheme codedark
 endif
 
 " Disable html5 stuff that I don't use

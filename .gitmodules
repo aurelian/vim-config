@@ -124,3 +124,6 @@
 [submodule "bundle/lightline"]
 	path = bundle/lightline
 	url = https://github.com/itchyny/lightline.vim
+[submodule "bundle/oceanic-next"]
+	path = bundle/oceanic-next
+	url = https://github.com/mhartington/oceanic-next.git
