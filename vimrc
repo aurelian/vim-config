@@ -250,9 +250,9 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 
 " -- Color scheme / UI
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+"if (has("termguicolors"))
+"  set termguicolors
+"endif
 
 set background=dark
 let base16colorspace=256
