@@ -108,7 +108,7 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
-nnoremap <leader>s byw:Ack <C-r>"
+nnoremap <leader>s byw:Ack! <C-r>"
 nnoremap <leader>c :ccl<CR>
 " nnoremap <silent> <buffer> c :ccl<CR>
 " Sane regexes
@@ -158,7 +158,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 cnoremap ## <C-R>=expand("%:h")."/"<cr>
 
 " F9 to Dispatch.
-nnoremap <F9> :Dispatch
+nnoremap <F9> :Dispatch<CR>
 " F8. gf in vertical split
 nnoremap <F8> :vertical wincmd f<CR>
 
@@ -298,6 +298,7 @@ let b:closetag_html_style=1
 
 " ack plugin command
 let g:ackprg="ag --vimgrep --nogroup --nocolor --column"
+" let g:ack_use_dispatch = 1
 
 " jsx plugin: enable jsx in .js files
 let g:jsx_ext_required = 0
@@ -325,7 +326,10 @@ autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
 autocmd FileType rust setlocal shiftwidth=4 softtabstop=4
 " autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4
 
+" Dispatch
 autocmd BufRead,BufNewFile **/spec/*_spec.rb let b:dispatch = 'bundle exec rspec %'
+autocmd BufRead,BufNewFile Gemfile let b:dispatch = 'bundle install'
+autocmd BufRead,BufNewFile *.gemspec let b:dispatch = 'bundle install'
 
 " Save when losing focus
 autocmd FocusLost * :wa
