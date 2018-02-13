@@ -100,9 +100,6 @@
 [submodule "bundle/vim-slim"]
 	path = bundle/vim-slim
 	url = git@github.com:slim-template/vim-slim.git
-[submodule "bundle/elm.vim"]
-	path = bundle/elm.vim
-	url = https://github.com/lambdatoast/elm.vim.git
 [submodule "bundle/iceberg.vim"]
 	path = bundle/iceberg.vim
 	url = https://github.com/cocopon/iceberg.vim
@@ -130,3 +127,6 @@
 [submodule "bundle/vim-rhubarb"]
 	path = bundle/vim-rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "bundle/elm-vim"]
+	path = bundle/elm-vim
+	url = git@github.com:ElmCast/elm-vim.git
