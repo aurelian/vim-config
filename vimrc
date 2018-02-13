@@ -281,11 +281,10 @@ if has("gui_running")
   " full screen mode, cmd-cr toggles full screen
   set fuoptions=maxhorz,maxvert
   nmap <D-CR> :set invfu<CR>
-  colorscheme OceanicNext
   set nu
-else
-  colorscheme codedark
 endif
+
+colorscheme codedark
 
 " Disable html5 stuff that I don't use
 let g:html5_event_handler_attributes_complete = 0
@@ -381,4 +380,23 @@ autocmd VimEnter * RainbowParenthesesActivate
 autocmd Syntax * RainbowParenthesesLoadRound
 autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
 

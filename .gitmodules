@@ -127,3 +127,6 @@
 [submodule "bundle/oceanic-next"]
 	path = bundle/oceanic-next
 	url = https://github.com/mhartington/oceanic-next.git
+[submodule "bundle/vim-rhubarb"]
+	path = bundle/vim-rhubarb
+	url = git@github.com:tpope/vim-rhubarb.git
