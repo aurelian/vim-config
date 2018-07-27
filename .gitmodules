@@ -130,3 +130,6 @@
 [submodule "bundle/elm-vim"]
 	path = bundle/elm-vim
 	url = git@github.com:ElmCast/elm-vim.git
+[submodule "bundle/vim-elexir"]
+	path = bundle/vim-elexir
+	url = git@github.com:elixir-editors/vim-elixir.git

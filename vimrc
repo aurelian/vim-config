@@ -151,6 +151,17 @@ endfunction
 
 imap <Tab> <C-R>=SuperTab()<CR>
 
+function! Vicious()
+  let match = search('.if$', 'bn', line('w0'))
+
+  if match > 0
+    return "\<ESC>2hd$^iif \<ESC>o"
+  endif
+" return "\<ESC>2hd$^iif \<ESC>$i\<C-O>o"
+endfunction
+
+imap xx <C-R>=Vicious()<CR>
+
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
@@ -240,8 +251,8 @@ inoremap <c-l> <right>
 inoremap jj <Esc>:w<CR>
 " ii exits insert mode
 " imap ii <Esc>
-inoremap jk <Esc>
-inoremap kj <Esc>
+" inoremap jk <Esc>
+" inoremap kj <Esc>
 
 " cursor mode change -- https://github.com/mhinz/vim-galore/blob/master/README.md#change-cursor-style-dependent-on-mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -399,4 +410,4 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
-
+map <Leader>rt :!/usr/local/Cellar/ctags/5.8_1/bin/ctags --language-force=ruby --exclude=.git --exclude=log -R * `bundle show --paths`
