@@ -161,6 +161,7 @@ function! Vicious()
 endfunction
 
 imap xx <C-R>=Vicious()<CR>
+imap bp binding.pry
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
