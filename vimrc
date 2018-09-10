@@ -250,10 +250,15 @@ inoremap <c-l> <right>
 
 " save with jj
 inoremap jj <Esc>:w<CR>
-" ii exits insert mode
-" imap ii <Esc>
-" inoremap jk <Esc>
-" inoremap kj <Esc>
+
+" rspec
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>r :call RunAllSpecs()<CR>
+
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
 
 " cursor mode change -- https://github.com/mhinz/vim-galore/blob/master/README.md#change-cursor-style-dependent-on-mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -411,4 +416,4 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
-map <Leader>rt :!/usr/local/Cellar/ctags/5.8_1/bin/ctags --language-force=ruby --exclude=.git --exclude=log -R * `bundle show --paths`
+map <Leader>rt :!/usr/local/Cellar/ctags/5.8_1/bin/ctags --language-force=ruby --exclude=.git --exclude=log -R * `bundle show --paths`<CR>
