@@ -253,9 +253,12 @@ inoremap jj <Esc>:w<CR>
 
 " rspec
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>r :call RunAllSpecs()<CR>
+autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
+autocmd FileType rspec.ruby nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
+autocmd FileType ruby nnoremap <buffer> <Leader>l :call RunLastSpec()<CR>
+autocmd FileType ruby nnoremap <buffer> <Leader>r :call RunAllSpecs()<CR>
+autocmd FileType ruby nnoremap <buffer> <Leader>o :!rubocop -a %<CR>
+autocmd FileType rspec.ruby nnoremap <buffer> <Leader>o :!rubocop -a %<CR>
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
