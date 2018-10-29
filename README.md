@@ -92,6 +92,15 @@ Usage:
 <c-v> Open selected file in a vsplit.
 ```
 
+ * [vim-rspec](https://github.com/thoughtbot/vim-rspec)
+
+```vim
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+```
+
  * [ack](https://github.com/mileszs/ack.vim)
 
 `:Ack stuf`
