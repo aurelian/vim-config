@@ -257,8 +257,38 @@ autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
 autocmd FileType rspec.ruby nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>l :call RunLastSpec()<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>r :call RunAllSpecs()<CR>
-autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
+" autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
 "autocmd FileType rspec.ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
+
+" ALE -- https://github.com/w0rp/ale
+let b:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['rubocop', 'rufo'],
+      \ }
+
+let g:ale_sign_error = '⨉'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_enter = 0
+
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALELint<CR>
+" autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>
+
+" MDGPG
+function! StartEditingGPG()
+  echom "hello"
+endfunction
+
+augroup MarkdownGnuPG
+  au!
+
+  autocmd BufNewFile,BufRead *.md.gpg set filetype=gpg.md
+  autocmd FileType gpg.md
+    \ autocmd BufReadPost,FileReadPost * call StartEditingGPG()
+augroup END
+" end MDGPG
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1

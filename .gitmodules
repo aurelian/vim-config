@@ -64,9 +64,6 @@
 [submodule "bundle/jajs.vim"]
 	path = bundle/jajs.vim
 	url = git@github.com:othree/yajs.vim.git
-[submodule "bundle/rainbow_parentheses.vim"]
-	path = bundle/rainbow_parentheses.vim
-	url = git@github.com:kien/rainbow_parentheses.vim.git
 [submodule "bundle/JavaScript-Indent"]
   path = bundle/JavaScript-Indent
   url = git@github.com:KurtPreston/JavaScript-Indent.git
@@ -145,3 +142,9 @@
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "bundle/monotone-terminal"]
+	path = bundle/monotone-terminal
+	url = https://gitlab.com/ducktape/monotone-termnial.git
+[submodule "bundle/rainbow_parantheses.vim"]
+	path = bundle/rainbow_parantheses.vim
+	url = git@github.com:eapache/rainbow_parentheses.vim.git
