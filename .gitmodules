@@ -148,3 +148,6 @@
 [submodule "bundle/rainbow_parantheses.vim"]
 	path = bundle/rainbow_parantheses.vim
 	url = git@github.com:eapache/rainbow_parentheses.vim.git
+[submodule "bundle/plastic.vim"]
+	path = bundle/plastic.vim
+	url = git@github.com:flrnprz/plastic.vim.git

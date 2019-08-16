@@ -106,10 +106,20 @@ function! VisualFindAndReplaceWithSelection() range
     :w
 endfunction
 
+function! QFVert()
+  let qf_buffer_ln = line('.')
+  wincmd p
+  vnew
+  execute "cc ".qf_buffer_ln
+endfunction
+
+nnoremap <Leader>v :call QFVert()<CR>
+nnoremap <Leader>n :cn<CR>
+nnoremap <leader>c :ccl<CR>
+
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 nnoremap <leader>s byw:Ack! <C-r>"
-nnoremap <leader>c :ccl<CR>
 " nnoremap <silent> <buffer> c :ccl<CR>
 " Sane regexes
 nnoremap / /\v
@@ -255,9 +265,9 @@ inoremap jj <Esc>:w<CR>
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
 autocmd FileType rspec.ruby nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
-autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>l :call RunLastSpec()<CR>
-autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>r :call RunAllSpecs()<CR>
-" autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>r :call RunLastSpec()<CR>
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>l :call RunAllSpecs()<CR>
+"autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
 "autocmd FileType rspec.ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
 
 " ALE -- https://github.com/w0rp/ale
@@ -304,7 +314,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 "  set termguicolors
 "endif
 
-set background=dark
 let base16colorspace=256
 
 set cursorline                 " highlight the screen line of the cursor
@@ -334,7 +343,10 @@ if has("gui_running")
   set nu
 endif
 
-colorscheme codedark
+" colorscheme codedark
+colorscheme plastic
+
+set background=light
 
 " Disable html5 stuff that I don't use
 let g:html5_event_handler_attributes_complete = 0
@@ -449,4 +461,17 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
+nmap <Leader>f :Files<CR>
+nmap <Leader>b :Buffers<CR>
+
 map <Leader>rt :!/usr/local/Cellar/ctags/5.8_1/bin/ctags --language-force=ruby --exclude=.git --exclude=log -R * `bundle show --paths`<CR>
+
+
+" wrap the current line in (), e.g:
+nnoremap (( mMI(<esc>A)<esc>`M
+
+" wrap the rest of the line in ()
+nnoremap )) mMi(<esc>A)<esc>`M
+" Rebinds J and K in visual mode to move block up or down in relation to the other lines, while keeping the selection.
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
