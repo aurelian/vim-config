@@ -74,7 +74,8 @@ set directory=~/.vim/.cache/swap/
 " -- Wildmenu (Tab completion)
 "  inspiration: https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 set wildmenu
-set wildmode=list:longest:full                    "priority for tab completion
+set wildmode=longest:list,full
+" set wildmode=list:longest:full                    "priority for tab completion
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -276,6 +277,7 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 soft
 let b:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'ruby': ['rubocop', 'rufo'],
+      \ 'rspec.ruby': ['rubocop', 'rufo'],
       \ }
 
 let g:ale_sign_error = '⨉'
@@ -285,20 +287,21 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_enter = 0
 
-autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALELint<CR>
-" autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>i :ALELint<CR>
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>
 
+au BufRead,BufNewFile *.md.gpg setfiletype gpgmd
 " MDGPG
-function! StartEditingGPG()
-  echom "hello"
+function! <SID>StartEditingGPG()
+  echom "--> file is: " . expand("%")
+  colorscheme base16-green-screen
 endfunction
 
 augroup MarkdownGnuPG
-  au!
+  autocmd!
 
-  autocmd BufNewFile,BufRead *.md.gpg set filetype=gpg.md
-  autocmd FileType gpg.md
-    \ autocmd BufReadPost,FileReadPost * call StartEditingGPG()
+  autocmd FileType gpgmd
+    \ autocmd BufReadPre * :call <SID>StartEditingGPG()
 augroup END
 " end MDGPG
 
