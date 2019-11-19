@@ -262,6 +262,8 @@ inoremap <c-l> <right>
 " save with jj
 inoremap jj <Esc>:w<CR>
 
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
 " rspec
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
@@ -274,7 +276,7 @@ autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>l :call RunAllSpecs()
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " ALE -- https://github.com/w0rp/ale
-let b:ale_fixers = {
+let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'ruby': ['rubocop', 'rufo'],
       \ 'rspec.ruby': ['rubocop', 'rufo'],
