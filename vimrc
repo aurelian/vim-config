@@ -3,8 +3,6 @@ set t_Co=256
 
 let mapleader="\<Space>"
 
-let g:clj_fmt_autosave = 0
-
 call pathogen#infect()
 
 syntax on
@@ -265,7 +263,7 @@ inoremap jj <Esc>:w<CR>
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 " rspec
-let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec --format=doc {spec}\n")'
 autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
 autocmd FileType rspec.ruby nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>r :call RunLastSpec()<CR>
@@ -309,6 +307,9 @@ augroup END
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+
+let g:clj_fmt_autosave = 0
+let g:terraform_fmt_on_save=1
 
 " cursor mode change -- https://github.com/mhinz/vim-galore/blob/master/README.md#change-cursor-style-dependent-on-mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"

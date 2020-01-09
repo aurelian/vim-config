@@ -154,3 +154,6 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = git@github.com:fatih/vim-go.git
+[submodule "bundle/vim-terraform"]
+	path = bundle/vim-terraform
+	url = git@github.com:hashivim/vim-terraform.git
