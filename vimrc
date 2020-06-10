@@ -96,20 +96,20 @@ set smartcase
 
 "https://github.com/toranb/dotfiles/blob/daf05812bed08b9c6d367aeb0b6ccd12764765dd/vimrc#L333-L340
 function! VisualFindAndReplace()
-    :OverCommandLine%s/
-    :w
+  :OverCommandLine%s/
+  :w
 endfunction
 
 function! VisualFindAndReplaceWithSelection() range
-    :'<,'>OverCommandLine s/
-    :w
+  :'<,'>OverCommandLine s/
+  :w
 endfunction
 
 function! QFVert()
-  let qf_buffer_ln = line('.')
-  wincmd p
-  vnew
-  execute "cc ".qf_buffer_ln
+let qf_buffer_ln = line('.')
+wincmd p
+vnew
+execute "cc ".qf_buffer_ln
 endfunction
 
 nnoremap <Leader>v :call QFVert()<CR>
@@ -151,21 +151,32 @@ set matchpairs+=<:>
 
 " tab auto-complete
 function! SuperTab()
-  if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
-    return "\<Tab>"
-  else
-    return "\<C-n>"
-  endif
+if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+  return "\<Tab>"
+else
+  return "\<C-n>"
+endif
 endfunction
 
 imap <Tab> <C-R>=SuperTab()<CR>
 
-function! Vicious()
-  let match = search('.if$', 'bn', line('w0'))
+"function! SuperGoTab()
+"if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+"  return "\<Tab>"
+"else
+"  return "\<C-x><C-o>"
+"endif
+"endfunction
+"autocmd FileType go imap <buffer> <Tab> <C-R>=SuperGoTab()<CR>
 
-  if match > 0
-    return "\<ESC>2hd$^iif \<ESC>o"
-  endif
+au filetype go inoremap <buffer> .<leader> .<C-x><C-o>
+
+function! Vicious()
+let match = search('.if$', 'bn', line('w0'))
+
+if match > 0
+  return "\<ESC>2hd$^iif \<ESC>o"
+endif
 " return "\<ESC>2hd$^iif \<ESC>$i\<C-O>o"
 endfunction
 
@@ -232,7 +243,6 @@ vnoremap // y/<C-R>"<CR>
 " Select previously pasted content with Leader-v
 nnoremap <leader>v V`]
 
-" hardcore level 1
 " up/down arrows move betweeen buffers
 nnoremap <down> :bprev<CR>
 nnoremap <up>   :bnext<CR>
@@ -259,6 +269,7 @@ inoremap <c-l> <right>
 
 " save with jj
 inoremap jj <Esc>:w<CR>
+" nmap jj <Esc><CR>
 
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
@@ -286,6 +297,29 @@ let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_enter = 0
+
+" golang stuff
+" let g:go_auto_sameids = 1
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+" let g:go_fmt_experimental = 1
+" let g:go_metalinter_autosave=1
+" let g:go_metalinter_autosave_enabled=['golint', 'govet']
 
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>i :ALELint<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>
