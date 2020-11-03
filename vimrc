@@ -322,7 +322,7 @@ let g:go_highlight_variable_assignments = 1
 " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>i :ALELint<CR>
-autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>
+autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :ALEFix<CR>:w<CR>:e<CR>
 
 au BufRead,BufNewFile *.md.gpg setfiletype gpgmd
 " MDGPG
@@ -401,7 +401,7 @@ let b:closetag_html_style=1
 
 " ack plugin command
 let g:ackprg="ag --vimgrep --nogroup --nocolor --column"
-" let g:ack_use_dispatch = 1
+let g:ack_use_dispatch = 1
 
 " jsx plugin: enable jsx in .js files
 let g:jsx_ext_required = 0
@@ -508,6 +508,8 @@ nmap <Leader>b :Buffers<CR>
 
 map <Leader>rt :!/usr/local/Cellar/ctags/5.8_1/bin/ctags --language-force=ruby --exclude=.git --exclude=log -R * `bundle show --paths`<CR>
 
+autocmd FileType rspec.ruby iabbrev <buffer> l let(: ) { create(: ) }
+autocmd FileType rspec.ruby iabbrev <buffer> it it 'does stuff' do
 
 " wrap the current line in (), e.g:
 nnoremap (( mMI(<esc>A)<esc>`M

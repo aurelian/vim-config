@@ -157,3 +157,6 @@
 [submodule "bundle/vim-terraform"]
 	path = bundle/vim-terraform
 	url = git@github.com:hashivim/vim-terraform.git
+[submodule "bundle/QFEnter"]
+	path = bundle/QFEnter
+	url = git@github.com:yssl/QFEnter.git
