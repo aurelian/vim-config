@@ -386,7 +386,7 @@ if has("gui_running")
 endif
 
 " colorscheme codedark
-colorscheme plastic
+colorscheme zellner
 
 set background=light
 
@@ -477,7 +477,7 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
-autocmd FileType c,cpp,java,php,javascript,ruby,html
+autocmd FileType c,cpp,java,php,javascript,ruby,html,haml
   \ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 autocmd VimEnter * RainbowParenthesesActivate
