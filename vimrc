@@ -3,6 +3,8 @@ set t_Co=256
 
 let mapleader="\<Space>"
 
+let g:ale_completion_enabled=1
+
 call pathogen#infect()
 
 syntax on
