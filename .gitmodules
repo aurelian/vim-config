@@ -160,3 +160,6 @@
 [submodule "bundle/QFEnter"]
 	path = bundle/QFEnter
 	url = git@github.com:yssl/QFEnter.git
+[submodule "bundle/vim-fugitive-gitlab"]
+	path = bundle/vim-fugitive-gitlab
+	url = git@github.com:shumphrey/fugitive-gitlab.vim.git

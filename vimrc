@@ -3,7 +3,11 @@ set t_Co=256
 
 let mapleader="\<Space>"
 
-let g:ale_completion_enabled=1
+let g:ale_completion_enabled=0
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
 
 call pathogen#infect()
 
@@ -281,6 +285,8 @@ autocmd BufNewFile,BufRead *_spec.rb set filetype=rspec.ruby
 autocmd FileType rspec.ruby nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>r :call RunLastSpec()<CR>
 autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>l :call RunAllSpecs()<CR>
+
+"autocmd FileType rust nnoremap <buffer> <Leader>t :call RunCurrentSpecFile()<CR>
 "autocmd FileType rspec.ruby,ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
 "autocmd FileType rspec.ruby nnoremap <buffer> <Leader>o :call Send_to_Tmux("rubocop -a " . @% . "\n")<CR>
 
@@ -295,10 +301,6 @@ let g:ale_fixers = {
 
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '⚠'
-
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_enter = 0
 
 " golang stuff
 " let g:go_auto_sameids = 1
